@@ -1,0 +1,30 @@
+<div class="cloud">
+    <div class="cloud_header">
+        <div class="header_img"></div>
+        <h1><?= Vida_Helpers_Text::_T('tags') ?></h1>
+    </div>
+
+    <table class="block categories_list">
+        <thead>
+            <tr><td><b></b></td></tr>
+        </thead>
+        <tr>
+            <td class="block_middle">
+                <div class="block_container">
+                    <div class="cloud_links">
+<? if(!empty($this->cloud) && count($this->cloud) > 0) : ?>
+    <?php foreach ($this->cloud as $tag): ?>
+        <a href="<?= $tag['link'] ?>" class="size<?= $tag['class'] ?>"><?= $tag['tag'] ?></a>
+    <?php endforeach; ?>
+<? else: ?>
+<?= Vida_Helpers_Text::_T('В облаке нет тегов') ?>
+<? endif ?>
+                    </div>
+                </div>
+                <i></i>
+            </td>
+        </tr>
+        <tr><th><i></i></th></tr>
+    </table>
+
+</div>

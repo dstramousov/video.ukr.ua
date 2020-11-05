@@ -1,0 +1,86 @@
+<?= $this->doctype() ?>
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>  
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+
+    <?= $this->headTitle() ?>
+    <?= $this->headMeta() ?>
+    <? $this->headLink()->appendStylesheet(Vida_Helpers_File::get_rev('/css/main.css')) 
+                        ->appendStylesheet(Vida_Helpers_File::get_rev('/css/custom.css'))
+                        ->appendStylesheet(Vida_Helpers_File::get_rev('/css/search_categories.css'))
+                        ->appendStylesheet(Vida_Helpers_File::get_rev('/css/my_menu.css'))
+                        ->appendStylesheet(Vida_Helpers_File::get_rev('/css/prototip.css'))
+                        ->appendStylesheet(Vida_Helpers_File::get_rev('/css/ie6.css'), 'all', 'IE 6')
+                        ->appendStylesheet(Vida_Helpers_File::get_rev('/css/ie7.css'), 'all', 'IE 7') ?>
+
+    <? 
+        $this->headScript()
+            ->appendFile('/js/prototype.js')
+            ->appendFile('/js/scriptaculous/scriptaculous.js?load=effects') 
+            ->appendFile('/js/prototip.js') 
+            ->appendFile('/js/moofx_2.0/moo.fx.js')
+            ->appendFile('/js/moofx_2.0/moo.fx.utils.js') 
+            ->appendFile('/js/moofx_2.0/moo.fx.pack.js') 
+            ->appendFile('/js/moofx_2.0/moo.flash.js') 
+            ->appendFile('/js/moofx_2.0/color.js') 
+            ->appendFile(Vida_Helpers_File::get_rev('/js/script.js'))
+            ->appendFile('/js/si.files.js')
+            ->appendFile(Vida_Helpers_File::get_rev('/js/messages.js'))
+            ->appendFile(Vida_Helpers_File::get_rev('/js/check.js'))
+            ->appendFile('/js/swfobject.js')
+            ->appendFile(Vida_Helpers_File::get_rev('/js/tools.js')) 
+     ?>
+
+    <?= $this->headLink() ?>
+    <?= $this->headScript() ?>
+
+<script type="text/javascript" language="javascript">function toggle1(id, clss) {document.getElementById(id).className=clss;}</script>
+
+</head>
+
+<body>
+
+<!-- login form -->
+<div class="login_container_off" id="login">
+
+<div class="login_screen"></div>
+<div class="login">
+<div id="login-container">
+<h1><?= Vida_Helpers_Text::_T('authorize') ?></h1>
+<a href="javascript:void(0);" class="login_close" onclick="toggle1('login', 'login_container_off');"></a>
+<div id="loginerror_message" style="display: none" class="login_error_message"><?= Vida_Helpers_Text::_T('Неправильный логин или пароль') ?></div>
+<span><?= Vida_Helpers_Text::_T('login') ?></span>
+<input type="text" id="id_login" name="login" />
+<span><?= Vida_Helpers_Text::_T('password') ?></span>
+<input type="password" id="id_password" name="password"/>
+
+<div class="login_etc">
+<input type="checkbox" id="remember_psswd" name="remember_psswd" /><label for="remember_psswd"><?= Vida_Helpers_Text::_T('remember') ?></label>
+<a href="/index/restorepassword"><?= Vida_Helpers_Text::_T('restorepassword') ?>?</a>
+</div>                 
+<input type="image" src="/images/login_button_<?= Vida_Helpers_Text::_L() ?>.gif" class="login_button" onclick="authorize()" />
+</div>
+</div>
+
+</div>
+<!-- /login form -->
+
+<div id="loader" style="display:none;" class="connect_tosrv">
+<div id="loader_shadow"></div>
+<img src="/images/ldr1.gif" class="con_to_srv" alt="" />
+</div>
+<div class="wrapper">
+
+    <?php print $this->partial('bigtoolbar.phtml'); ?>
+
+    <?php print $this->partial('header.phtml'); ?>
+    <?= $this->layout()->precontent ?>
+    <?= $this->layout()->leftsidebar ?><?= $this->layout()->content ?><?= $this->layout()->rightsidebar ?>
+    <?= $this->layout()->postcontent ?>
+
+    <?php print $this->partial('footer.phtml'); ?>
+
+</div>
+</body>
+</html>

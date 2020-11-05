@@ -1,0 +1,79 @@
+;; This is a sample app.ini file.  Your application will dictate the format and the
+;; type of sections and data that can be found in this ini file.  It will also dictate
+;; how many ini files will be contained in your config/ directory.  For the puropose
+;; of our application, this one file makes the most sense.
+
+;; we always have our "production" section first, because it will define ALL of the 
+;; keys that our application is expecting to see.
+
+[production]
+database.adapter       = "PDO_MYSQL"
+database.params.host = "localhost";
+database.params.username = "video_ua";
+database.params.password = "video_ua";
+database.params.dbname = "video_ua";
+charset = "cp1251";
+gmt_offset = 2;
+
+site.revision = 1
+site.url = http://192.168.1.32:8082
+
+;; security rpc service
+security.rpc=http://osopilnyak-ws.local-global.local:8080/authentication/
+security.keys=%APPLICATION_PATH%/security/ssh/
+
+;;
+;; Workers pool
+;; Rem: System running remote task on pool mashine (under "runner" account)
+;;
+workers.1 = 192.168.1.7
+workers.2 = 192.168.1.9
+
+;;
+;; SMTP account (for sending info emails)
+;;
+;;mail.host = mx.ukr.ua
+mail.host = 172.16.25.250
+mail.port = 25
+mail.auth = login
+mail.username = info
+mail.password = MiVtUoP7FR4917nDE
+;; admin area info
+broadcast.email = info@ukr.ua
+
+;; debug
+;;  EMERG   = 0;  // Emergency: system is unusable
+;;  ALERT   = 1;  // Alert: action must be taken immediately
+;;  CRIT    = 2;  // Critical: critical conditions
+;;  ERR     = 3;  // Error: error conditions
+;;  WARN    = 4;  // Warning: warning conditions
+;;  NOTICE  = 5;  // Notice: normal but significant condition
+;;  INFO    = 6;  // Informational: informational messages
+;;  DEBUG   = 7;  // Debug: debug messages
+log.priority = 7
+
+;; images storage
+images.path = images/storage/       ;; images path
+
+;;
+;; video file storage
+;;
+file.storage = %APPLICATION_PATH%/../tmp/
+
+;; временное хранилище для загруженных но еще необработанных файлов
+file.tmp = %APPLICATION_PATH%/../tmp/tmp/
+
+[development : production]
+file.storage = Y:\tmp\video\
+file.tmp = Y:\tmp\video\tmp\
+file.storage_l = /mnt/tmp/tmp/video/
+file.tmp_l = /mnt/tmp/tmp/video/tmp/
+;;database.params.dbname = "video_db";
+;;database.params.username = "root";
+;;database.params.password = "";
+
+;;site.url = http://video.ukr.local
+
+;; SMTP account (for sending info emails)
+mail.host = mx.ukr.ua
+

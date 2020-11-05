@@ -1,0 +1,292 @@
+<? $this->inlineScript()->captureStart() ?>
+    var values = <?= $this->values ?>;
+    var errors = <?= $this->errors ?>;
+
+    function calcel_upload() {
+        if (confirm('<?= Vida_Helpers_Text::_T('Вы действительно хотите прервать загрузку?') ?>')) {
+            window.location = "/";
+        }
+    }
+    
+    function upload_file() {
+        err = {};
+        var emptyMsg = "<?= Vida_Helpers_Text::_T('Поле не может быть пустым') ?>";
+        $val = $('res').getValue();
+        err.file = "";
+        if($val.blank()) {
+            err.file = "<?= Vida_Helpers_Text::_T('Не задан файл для загрузки или файл не подходит по критериям') ?>";
+        }
+        $val = $('title_id').getValue();
+        err.title = "";
+        if($val.blank()) {
+            err.title = emptyMsg;
+        }
+        $val = $('tags_id').getValue();
+        err.tags = "";
+        if($val.blank()) {
+            err.tags = emptyMsg;
+        }
+        $val = $('descr_id').getValue();
+        err.description = "";
+        if($val.blank()) {
+            err.description = emptyMsg;
+        }
+        $val = $('category').getValue();
+        err.category_id = "";
+        if($val.blank() || !$val.isNumeric()) {
+            err.category_id = emptyMsg;
+        }
+        var c = 0;
+        for(var i in err) {
+            if(!err[i].blank()) {
+                c++;
+            }
+        }
+        if(c > 0) {
+            populate_errors(err);
+        } else {
+            /* generate random progress-id */
+            uuid = "";
+            for (i = 0; i < 32; i++) {
+              uuid += Math.floor(Math.random() * 16).toString(16);
+            }
+            $('upload-form').action = $('upload-form').action + "?X-Progress-ID=" + uuid;
+            new Gauge('/progress', uuid);
+            
+            setTimeout(function() {$('upload-form').submit()}, 1000);
+            
+            return true;
+        }
+        return false;
+    }
+    
+    /**
+    * Progress gauge class
+    */
+    var Gauge = Class.create({
+        //private
+        _prev_data: {st: new Date().valueOf(), ts: new Date().valueOf(), fs: 0},  //время последнего вызова и размер секции
+        
+        initialize: function(action, uuid) {
+            this.action=action;
+            this.uuid = uuid;
+            this._prev_data.st = new Date().valueOf();
+            this._prev_data.ts = new Date().valueOf();
+            $('form-container').hide();
+            $('progress-container').show();
+            if(Prototype.Browser.WebKit || Prototype.Browser.MobileSafari) {
+                $('progress_bar_id').addClassName('saf_progress_bar');
+                $('gauge_num').innerHTML = '<?= Vida_Helpers_Text::_T('Идет загрузка') ?>...';
+            }
+            new PeriodicalExecuter(this.update.bind(this), 1);
+        },
+        update: function(pe) {
+            if(Prototype.Browser.WebKit || Prototype.Browser.MobileSafari) {
+                this.safari_render();
+            } else {
+                this.pe = pe;
+                var params = {};
+                new Ajax.Request(this.action, {
+                    method: 'GET',
+                    parameters: params,
+                    requestHeaders: {"X-Progress-ID": this.uuid},
+                    onSuccess: this.callback.bind(this),
+                    onException: function(req, exception) {
+                        return Tools.processException(req, exception);
+                    }
+                });
+            }
+        },
+        callback: function(transport) {
+            //alert(Object.toJSON(transport.responseJSON));
+            if(transport.responseText) {
+                this.render(eval('(' + transport.responseText + ')'));
+            }
+            return true;
+        },
+        
+        //private
+        time: function(ms) {
+            ms = Math.abs(ms);
+            var sec = Math.floor(ms/1000);
+            var min = 0;
+            var hours = 0;
+            var days = 0;
+            if(sec >= 60) {
+                min = Math.floor(sec/60);
+                sec = sec % 60;
+            }
+            if(min >= 60) {
+                hours = Math.floor(min/60);
+                min = min % 60;
+            }
+            if(hours > 24) {
+                days = Math.floor(hours/24);
+                hours = hours % 24;
+            }
+         
+            var t = (days > 0 ? days + ' d ': "") + (hours > 0 ? hours + ' h ': "") +
+                (min > 0 ? min + ' m ': "") + (sec > 0 ? sec + ' s ': "");
+            return t;
+        },
+        
+        //private
+        safari_render: function(data) {
+            var ts = new Date().valueOf();
+            $('estimate').innerHTML = this.time(this._prev_data.st - this._prev_data.ts);    //прошло времени
+            this._prev_data.ts = ts;
+        },
+        render: function(data) {
+            //'state' : 'uploading', 'received' : size_received, 'size' : total_size
+            if(data.state == 'uploading') {
+                var filesize = data.received;
+                var total = data.size;
+                var progress = Math.floor((filesize * 100)/total) ;
+                $('gauge_num').innerHTML = progress + '%';
+                $('gauge').setStyle({'width': progress + '%'});
+                $('uploaded_size').innerHTML = this.fSize(filesize, 2) + '/' + this.fSize(total, 2);
+                $('speed').innerHTML = this.upSpeed(filesize);
+                $('estimate').innerHTML = this.time(this._prev_data.st - this._prev_data.ts);    //прошло времени
+            } else if (data.state == 'error'){
+                if(this.pe) {
+                    this.pe.stop();
+                }
+                if(data.status != '302') {
+                    alert('Загрузка прервана. Код ошибки: ' + data.status);
+                    window.location = '/';
+                }
+            }
+        },
+        
+        //private
+        upSpeed: function(filesize) {
+            var ts = new Date().valueOf();
+            var t = ts - this._prev_data.ts;
+            var u = filesize - this._prev_data.fs;
+            var types = ['bytes', 'Kb', 'Mb', 'Gb', 'Tb', 'Zb'];
+            var counter = 0;
+            while(u > 1024) {
+                u = u / 1024;
+                counter++;
+            }
+            this._prev_data.ts = ts;
+            this._prev_data.fs = filesize;
+            return (u * 1000 /t).toFixed(2) + ' ' + types[counter] + '/s';
+        },
+        
+        //private
+        fSize: function(size, dec) {
+        if(!dec || dec < 0)
+            dec = 2;
+        var times = 0;
+        var nsize = Number(size);
+        var toEval = '';
+        var type = Array( 'bytes', 'Kb', 'Mb', 'Gb', 'Tb', 'Zb' );
+        while( nsize > 1024 ) {
+            nsize = nsize / 1024;
+            toEval += ' / 1024';
+            times++;
+        }
+        if( times > 0 )
+            eval( 'size = ( size' + toEval + ' );' );
+        if(dec > 0) {
+            var moltdiv = '(';
+            while(dec > 0) {
+                moltdiv += '10*';
+                dec--;
+            }
+            moltdiv = moltdiv.substr(0, (moltdiv.length - 1)) + ')';
+            eval( 'size = Math.round(size * ' + moltdiv + ') / ' + moltdiv + ';' );
+        }
+        return size + ' ' + type[times];
+        }
+        
+    });
+
+    SI.Files.htmlClass = "input-style";
+    var upload_loaded = false;
+    document.observe('dom:loaded', function() {
+        if(upload_loaded) return false;
+        upload_loaded = true;
+
+        SI.Files.stylizeAll();
+
+        populate_values('upload-form', values);
+        populate_errors(errors);
+        
+        $('upload-form').onsubmit = function() {
+        }
+    });
+<? $this->inlineScript()->captureEnd() ?>
+<?= $this->inlineScript() ?>
+
+<div class="upload_video_container">
+<h1><?= Vida_Helpers_Text::_T('Загрузка видео') ?></h1>
+
+<div class="upload_video" id="form-container">
+<form id="upload-form" method="post" action="/index/upload/" enctype="multipart/form-data">
+<ul>
+<li>
+<span><?= Vida_Helpers_Text::_T('Путь к файлу') ?>:</span><div class="u_v_error" id="file_error"></div>
+<input id="res" type="text" class="u_v_file" readonly="readonly" name="res_id" />
+
+<div class="browse_button">
+<label class="cabinet" style="background: url(/images/browse_button_<?= Vida_Helpers_Text::_L() ?>.gif) 0 0 no-repeat;">
+<input id="filename" type="file" class="file" onchange="$('res').value=this.value;" name="videofile" style="width:60px; height:20px;" />
+</label>
+</div>
+
+<span class="u_v_descr"><?= Vida_Helpers_Text::_T('upload_file_tip') ?></span>
+</li>
+
+<li>
+<span><?= Vida_Helpers_Text::_T('Заголовок ролика') ?>:</span><div class="u_v_error" id="title_error"></div>
+<input id="title_id" type="text" class="u_v_input" name="title"/>
+<span class="u_v_descr"><?= Vida_Helpers_Text::_T('upload_title_tip') ?></span>
+</li>
+
+<li>
+<span><?= Vida_Helpers_Text::_T('Описание') ?>:</span><div class="u_v_error" id="description_error"></div>
+<textarea id="descr_id" name="description" rows="" cols="" class="u_v_texta"></textarea>
+</li>
+
+<li>
+<span><?= Vida_Helpers_Text::_T('Категория') ?>:</span><div class="u_v_error" id="category_id_error"></div>
+<select id="category" class="u_v_select" name="category_id">
+<option disabled selected><?= Vida_Helpers_Text::_T('Выберите категорию видео') ?></option>
+<? foreach($this->categories as $category): ?>
+    <option value="<?= $category['category_id'] ?>"><?= $category['category'] ?></option>
+<? endforeach ?>
+</select>
+</li>
+
+<li>
+<span><?= Vida_Helpers_Text::_T('Тэги') ?> <i>(<?= Vida_Helpers_Text::_T('через запятую') ?>)</i>:</span><div class="u_v_error" id="tags_error"></div>
+<input id="tags_id" type="text" class="u_v_input" name="tags"/>
+<span class="u_v_descr"><?= Vida_Helpers_Text::_T('upload_title_tip') ?></span>
+</li>
+
+
+<li><img onclick="upload_file()" src="/images/upload_video_<?= Vida_Helpers_Text::_L() ?>.gif" class="u_v_button" /></li>
+
+</ul>
+<input type="hidden" name="MAX_FILE_SIZE" value="419430400"  />
+</form>
+</div>
+
+<div class="upload_progress" id="progress-container" style="display: none;">
+
+<div class="progress_bar" id="progress_bar_id">
+<div id="gauge" class="progress_fill"></div>
+<div id="gauge_num" class="progress_percent">0%</div>
+</div>
+
+<table class="upload_info">
+<tr><td><?= Vida_Helpers_Text::_T('Время') ?>:</td><td><b id="estimate">0</b></td></tr>
+<tr><td><?= Vida_Helpers_Text::_T('Загружено') ?>:</td><td><b id="uploaded_size">0 Mb</b></td></tr>
+<tr><td><?= Vida_Helpers_Text::_T('Скорость') ?>:</td><td><b id="speed">0 KB/s</b></td></tr>
+</table>
+<input type="image" onclick="calcel_upload()" src="/images/cancel_button_<?= Vida_Helpers_Text::_L() ?>.jpg" class="cancel_button" />
+</div>
+
+</div>

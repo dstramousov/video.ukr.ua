@@ -1,0 +1,66 @@
+<? $this->inlineScript()->captureStart() ?>
+var _selected = [];
+//отмечает одну запись
+function toList(obj, file_id) {
+    var el = $(obj);
+    if(el.checked) {
+        if(_selected.indexOf(file_id) < 0) {
+            _selected.push(file_id);
+        }
+    } else {
+        if(_selected.indexOf(file_id) >= 0) {
+            _selected = _selected.without(file_id);
+        }
+    }
+    //alert(_selected.inspect());
+}
+//отмечает все записи
+function selAll() {
+    $$('input.vi_check').each(function(el) {
+        var ev = el.getAttribute('onclick');
+        var fn = (function() { this.checked = !this.checked; eval(ev) }).bind(el);
+        fn();
+    });
+}
+//удаляет выбранные ролики
+function delSelected() {
+    if(_selected.size() == 0) {
+        alert("<?= Vida_Helpers_Text::_T('Выберите один или несколько роликов и повторите операцию') ?>");
+        return;
+    }
+    var params = {'ids': _selected.toJSON()};
+    params.task = 'DELETE';
+    message = "<?= Vida_Helpers_Text::_T('Вы действительно хотите удалить выбранные ролики?'); ?>"
+    ajax_request('/storage/videos/', params, message, function() { window.location.reload(); });
+}
+
+<? $this->inlineScript()->captureEnd() ?>
+<?= $this->inlineScript() ?>
+
+<div class="workpage_container">
+<div class="search_results_container">
+<h1><?= Vida_Helpers_Text::_T('Мои ролики') ?></h1>
+
+<?php if (count($this->paginator)): ?>
+    <div class="m_v_buttons">
+    <input type="checkbox" id="selectall" onclick="selAll();" /><label for="selectall"><?= Vida_Helpers_Text::_T('Выбрать все') ?></label>
+    <a href="javascript:void(0);" onclick="delSelected();"><?= Vida_Helpers_Text::_T('Удалить') ?></a>
+    </div>
+
+    <?= $this->paginator; ?>
+    <?php foreach ($this->entries as $file): ?>
+        <?= $this->videoItem($file, $this->keys, VI_MYVIDEOS_STYLE) ?>
+    <?php endforeach; ?>
+    <?= $this->paginator; ?>
+    
+    <div class="m_v_buttons">
+    <input type="checkbox" id="selectall_1" onclick="selAll();" /><label for="selectall_1"><?= Vida_Helpers_Text::_T('Выбрать все') ?></label>
+    <a href="javascript:void(0);" onclick="delSelected();"><?= Vida_Helpers_Text::_T('Удалить') ?></a>
+    </div>
+    
+<?php else: ?>
+        <p><?= Vida_Helpers_Text::_T('Не найдено ни одного ролика') ?></p>
+<?php endif ?>
+
+</div>
+</div>

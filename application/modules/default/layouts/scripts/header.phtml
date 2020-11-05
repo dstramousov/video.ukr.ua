@@ -1,0 +1,211 @@
+
+<? $this->inlineScript()->captureStart() ?>
+    //инициализация
+    var header_loaded = false;
+    document.observe('dom:loaded', function() {
+        if(header_loaded) return false;
+        header_loaded = true;
+        var lang = ex_getCookie('lang');
+        if(lang == "") {
+            lang = 'uk';
+        }
+        $$('ul.langs li a').each(function(el) {
+            if(el.hasClassName(lang)) {
+                el.addClassName("lang_current");
+            }
+        });
+        keydown_ex('login-container', authorize);
+        
+        //получение playlist-а пользователя и обновление контейнеров картинок
+        updatePL();
+        
+    });
+
+    // функции работы с квик playlist-ом //////////////////////////////////////////
+    function toQuickPL(el, file_id) {
+        var params = {'file_id': file_id};
+		params.task = 'ADD';
+		message = "<?= Vida_Helpers_Text::_T('Вы действительно хотите добавить ролик в список воспроизведения?'); ?>";
+        ajax_request('/storage/playlist/', params, message, function() { setTimeout(updateQuickPL, 1) }, new FakeLoader());
+    }
+
+    function removeFromQuickPL(el, file_id){
+        var params = {'file_id': file_id};
+		params.task = 'REMOVE';
+		message = "<?= Vida_Helpers_Text::_T('Вы действительно хотите удалить ролик из списка воспроизведения?'); ?>"
+        ajax_request('/storage/playlist/', params, message, function() { Effect.DropOut('file_container_'+file_id) }, new FakeLoader());
+    }
+
+    function updateQuickPL(){ window.location.reload(); }
+    ///////////////////////////////////////////////////////////////////////////////
+
+    //функции работы с playlist-ом
+    function toPL(el, file_id) {
+        var el = $(el);
+        var params = {'file_id': file_id};
+        if(el.hasClassName('to_playlist')) {
+            params.task = 'ADD';
+            message = "<?= Vida_Helpers_Text::_T('Вы действительно хотите добавить ролик в список воспроизведения?'); ?>"
+        } else {
+            params.task = 'REMOVE';
+            message = "<?= Vida_Helpers_Text::_T('Вы действительно хотите удалить ролик из списка воспроизведения?'); ?>"
+        }
+        ajax_request('/storage/playlist/', params, message, function() { setTimeout(updatePL, 200) }, new FakeLoader());
+    }
+    
+    function updatePL() {
+        var params = {'task': 'LIST'};
+        ajax_request('/storage/playlist/', params, null,
+            function(res) {
+                $$('a.playlist').each(function(el) {
+                    if(el.hasClassName('to_playlist_in')) {
+                        el.removeClassName('to_playlist_in');
+                    }
+                    if(!el.hasClassName('to_playlist')) {
+                        el.addClassName('to_playlist');
+                    }
+                });
+
+                
+                if(res) {
+                    res = eval('(' + res + ')');
+                    res.each(function(s) {
+                        $$('.video_' + s + ' a.playlist').each(function(el) {
+                            if(el.hasClassName('to_playlist')) {
+                                el.removeClassName('to_playlist');
+                            }
+                            el.addClassName('to_playlist_in');
+                        });
+                    });
+                }
+            }, new FakeLoader()
+        );
+    }
+    
+    function doSwitcherUserCategory(swither_id, text){
+        $('usercatchoise').innerHTML = text;
+        $('hidden_category_id').value = swither_id;
+    }
+    function doSearchInit(){
+        if($('id_searchtext').value == ''){
+            $('id_searchtext').focus();
+            init_toggle('id_searchtext'); 
+            return false;
+        }
+    }
+
+    //авторизация пользователя
+    function authorize() {
+        //проверка данных пользователя
+        var msg = validateUsername($('id_login'));
+        if(msg != ''){
+            $('id_login').focus();init_toggle('id_login');
+            return false;
+        }
+        var pass   = $('id_password').value.length;
+        if(pass < 2) {  
+            $('id_password').focus();init_toggle('id_password');
+            return false;
+        }
+    
+        var params = {'username': $('id_login').value, 'password': $('id_password').value};
+        new Ajax.Request('/login/authorize/', {
+          contentType: 'application/x-www-form-urlencoded',
+          evalJSON: true,
+          method: 'post',
+          parameters: params,
+          onSuccess: function(transport) {
+                if(transport.responseJSON) {
+                  //alert(Object.toJSON(transport.responseJSON));
+                  var res = transport.responseJSON;
+                  if(res.result == 0) {
+                      $('loginerror_message').show();
+                  } else {
+                      /*  
+                      if(res.sessionId != undefined) {
+                        ex_setCookie('LG.Portal.SessionID', res.sessionId);
+                      }
+                      */
+                      toggle_ex('login', 'login_off');
+                      window.location.reload();
+                  }
+                }
+                return true;
+           },
+           onException: function(req, exception) {
+                return Tools.processException(req, exception);
+           }
+     });
+    }
+
+<? $this->inlineScript()->captureEnd() ?>
+<?= $this->inlineScript() ?>
+
+<div class="header">
+    <div class="logo_etc">
+        <a href="<?= Vida_Helpers_Config::get_baseurl()?>" class="logo"></a>
+        <ul class="langs">
+            <li><a class="ru" href="javascript:void(0);" onclick="change_language('ru')">рус</a></li>
+            <li><a class="uk" href="javascript:void(0);" onclick="change_language('uk')">укр</a></li>
+            <li><a class="en" href="javascript:void(0);" onclick="change_language('en')">eng</a></li>
+        </ul>
+        <?php
+            $auth = Zend_Auth::getInstance();
+            if ($auth->hasIdentity()) : ?>
+                <? $username = $auth->getIdentity(); ?>
+                <ul class="hello_box">
+                    <li class="h_username"><?= Vida_Helpers_Text::_T('hellouser') ?>, <b><?= $username ?></b></li>
+                    <li class="exit"><a href="/login/logout" class="exit_link"><b></b><i><?= Vida_Helpers_Text::_T('logoutuser') ?></i></a></li>
+                </ul>
+        <? else: ?>
+            <ul class="loginbox">                              
+                <li class="login_c"><a href="javascript:void(0);" onclick="toggle1('login', 'login_container'); $('id_login').focus();"><?= Vida_Helpers_Text::_T('login') ?></a></li>
+                <li class="register_c"><a href="/index/register" ><?= Vida_Helpers_Text::_T('registration') ?></a></li>
+            </ul>
+        <? endif ?>
+    </div>
+
+    <div class="mmenu">
+        <form action="/index/search/" method="post">
+            <div class="search" id="id_searchdiv">
+                <input type="text" id="id_searchtext" name="q" />
+            </div>
+            <div class="search_categories">
+            <input name="category_id" id="hidden_category_id" type="hidden" value="0" />
+            <ul id="search_cat_nav">
+                <li><a href="javascript:void(0);" class="search_cat"><span id="usercatchoise"><?= Vida_Helpers_Text::_T('allcategory') ?>...</span><!--[if gte IE 7]><!--></a><!--<![endif]-->
+                <!--[if lte IE 6]><table><tr><td><![endif]-->
+                    <ul class="search_cat_lvl2">
+                    <? 
+                        $model_category = new Model_Category();
+                        $cl = $model_category->getFormatedList();
+                        echo $cl;
+                    ?>
+                    </ul><!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                </li>
+            </ul>
+            </div>
+        
+            <input type="image" src="/images/search_button_<?= Vida_Helpers_Text::_L() ?>.gif" onclick="return doSearchInit();" class="search_button" />
+        
+        </form>
+		<div class="my_menu_con">
+			<!-- my menu -->
+				<ul id="my_menu_nav">
+				<li><a href="javascript:void(0);" class="my_menu_<?= Vida_Helpers_Text::_L() ?>"><!--[if gte IE 7]><!--></a><!--<![endif]-->
+				<!--[if lte IE 6]><table><tr><td><![endif]-->
+					<ul class="my_menu_lvl2">
+						<li><a href="/index/playlist" class="mm_playlist"><?= Vida_Helpers_Text::_T('mylist') ?></a></li>
+						<li><a href="/pspace/mymessages" class="mm_statistics"><?= Vida_Helpers_Text::_T('mymessages') ?><?= $this->countMessages(true); ?></a></li>
+						<li><a href="/pspace/profile" class="mm_profile"><?= Vida_Helpers_Text::_T('myprofile') ?></a></li>
+						<li><a href="/pspace/videos" class="mm_fileman"><?= Vida_Helpers_Text::_T('myroliks') ?></a></li>
+					</ul><!--[if lte IE 6]></td></tr></table></a><![endif]-->
+				</li>
+				</ul>
+			<!-- my menu end -->
+			<?= $this->countMessages(false); ?>
+		</div>
+		<a href="/index/upload/"><input type="image" src="/images/upload_button_<?= Vida_Helpers_Text::_L() ?>.jpg" class="upload_button" /></a>
+    </div>
+
+</div>

@@ -1,0 +1,938 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+ <header creationtoolversion="1.0.0" datatype="winres" segtype="sentence"
+         adminlang="en-us" srclang="de-at" o-tmf="abc"
+         creationtool="XYZTool" >
+ </header>
+ <body>
+  <tu tuid='autos_vehicles'>
+   <tuv xml:lang="ru"><seg>Автомобили и транспорт</seg></tuv>
+   <tuv xml:lang="uk"><seg>Автомобілі і транспорт</seg></tuv>
+   <tuv xml:lang="en"><seg>Autos and Vehicles</seg></tuv>
+  </tu>
+  <tu tuid='comedy'>
+   <tuv xml:lang="ru"><seg>Комедия</seg></tuv>
+   <tuv xml:lang="uk"><seg>Комедія</seg></tuv>
+   <tuv xml:lang="en"><seg>Comedy</seg></tuv>
+  </tu>
+  <tu tuid='education'>
+   <tuv xml:lang="ru"><seg>Образование</seg></tuv>
+   <tuv xml:lang="uk"><seg>Освіта</seg></tuv>
+   <tuv xml:lang="en"><seg>Education</seg></tuv>
+  </tu>
+  <tu tuid='entertainment'>
+   <tuv xml:lang="ru"><seg>Развлечения</seg></tuv>
+   <tuv xml:lang="uk"><seg>Розваги</seg></tuv>
+   <tuv xml:lang="en"><seg>Еntertainment</seg></tuv>
+  </tu>
+  <tu tuid='film_animation'>
+   <tuv xml:lang="ru"><seg>Фильм и анимация</seg></tuv>
+   <tuv xml:lang="uk"><seg>Фільм та анімація</seg></tuv>
+   <tuv xml:lang="en"><seg>Film and Animation</seg></tuv>
+  </tu>
+  <tu tuid='gaming'>
+   <tuv xml:lang="ru"><seg>Игровые</seg></tuv>
+   <tuv xml:lang="uk"><seg>Ігрові</seg></tuv>
+   <tuv xml:lang="en"><seg>Gaming</seg></tuv>
+  </tu>
+  <tu tuid='howto_style'>
+   <tuv xml:lang="ru"><seg>Стиль</seg></tuv>
+   <tuv xml:lang="uk"><seg>Стиль</seg></tuv>
+   <tuv xml:lang="en"><seg>Style</seg></tuv>
+  </tu>
+  <tu tuid='movies'>
+   <tuv xml:lang="ru"><seg>Фильмы</seg></tuv>
+   <tuv xml:lang="uk"><seg>Фільми</seg></tuv>
+   <tuv xml:lang="en"><seg>Movies</seg></tuv>
+  </tu>
+  <tu tuid='music'>
+   <tuv xml:lang="ru"><seg>Музыка</seg></tuv>
+   <tuv xml:lang="uk"><seg>Музика</seg></tuv>
+   <tuv xml:lang="en"><seg>Music</seg></tuv>
+  </tu>
+  <tu tuid='news_politics'>
+   <tuv xml:lang="ru"><seg>Новости и политика</seg></tuv>
+   <tuv xml:lang="uk"><seg>Новини і політика</seg></tuv>
+   <tuv xml:lang="en"><seg>News and Politics</seg></tuv>
+  </tu>
+  <tu tuid='people_blogs'>
+   <tuv xml:lang="ru"><seg>Люди и блоги</seg></tuv>
+   <tuv xml:lang="uk"><seg>Люди та блоги</seg></tuv>
+   <tuv xml:lang="en"><seg>People and Blogs</seg></tuv>
+  </tu>
+  <tu tuid='pets_animals'>
+   <tuv xml:lang="ru"><seg>Домашние животные</seg></tuv>
+   <tuv xml:lang="uk"><seg>Домашні тварини</seg></tuv>
+   <tuv xml:lang="en"><seg>Pets and Animals</seg></tuv>
+  </tu>
+  <tu tuid='science_technology'>
+   <tuv xml:lang="ru"><seg>Наука и технология</seg></tuv>
+   <tuv xml:lang="uk"><seg>Наука і технологія</seg></tuv>
+   <tuv xml:lang="en"><seg>Science and Technology</seg></tuv>
+  </tu>
+  <tu tuid='sports'>
+   <tuv xml:lang="ru"><seg>Спорт</seg></tuv>
+   <tuv xml:lang="uk"><seg>Спорт</seg></tuv>
+   <tuv xml:lang="en"><seg>Sport</seg></tuv>
+  </tu>
+  <tu tuid='travel_events'>
+   <tuv xml:lang="ru"><seg>Путешествия и события</seg></tuv>
+   <tuv xml:lang="uk"><seg>Подорожі і події</seg></tuv>
+   <tuv xml:lang="en"><seg>Travel and Events</seg></tuv>
+  </tu>
+
+  <tu tuid='search'>
+   <tuv xml:lang="ru"><seg>Поиск</seg></tuv>
+   <tuv xml:lang="uk"><seg>Пошук</seg></tuv>
+   <tuv xml:lang="en"><seg>Search</seg></tuv>
+  </tu>
+<tu tuid='all_category'>
+   <tuv xml:lang="ru"><seg>во всех категориях</seg></tuv>
+   <tuv xml:lang="uk"><seg>у всіх категоріях</seg></tuv>
+   <tuv xml:lang="en"><seg>in all categories</seg></tuv>
+  </tu>
+<tu tuid='login'>
+   <tuv xml:lang="ru"><seg>Вход</seg></tuv>
+   <tuv xml:lang="uk"><seg>Вхід</seg></tuv>
+   <tuv xml:lang="en"><seg>Login</seg></tuv>
+  </tu>
+<tu tuid='registration'>
+   <tuv xml:lang="ru"><seg>Регистрация</seg></tuv>
+   <tuv xml:lang="uk"><seg>Реєстрація</seg></tuv>
+   <tuv xml:lang="en"><seg>Registration</seg></tuv>
+  </tu>
+<tu tuid='mylist'>
+   <tuv xml:lang="ru"><seg>Мой плейлист</seg></tuv>
+   <tuv xml:lang="uk"><seg>Мій плейлист</seg></tuv>
+   <tuv xml:lang="en"><seg>My playlist</seg></tuv>
+  </tu>
+<tu tuid='mystatistic'>
+   <tuv xml:lang="ru"><seg>Статистика</seg></tuv>
+   <tuv xml:lang="uk"><seg>Статистика</seg></tuv>
+   <tuv xml:lang="en"><seg>Statistic</seg></tuv>
+  </tu>
+<tu tuid='myprofile'>
+   <tuv xml:lang="ru"><seg>Профиль</seg></tuv>
+   <tuv xml:lang="uk"><seg>Профіль</seg></tuv>
+   <tuv xml:lang="en"><seg>Profile</seg></tuv>
+  </tu>
+<tu tuid='myexplorer'>
+   <tuv xml:lang="ru"><seg>Менеджер файлов</seg></tuv>
+   <tuv xml:lang="uk"><seg>Менеджер файлів</seg></tuv>
+   <tuv xml:lang="en"><seg>File manager</seg></tuv>
+  </tu>
+<tu tuid='topvideo'>
+   <tuv xml:lang="ru"><seg>Лучшее видео</seg></tuv>
+   <tuv xml:lang="uk"><seg>Найкраще відео</seg></tuv>
+   <tuv xml:lang="en"><seg>Top video</seg></tuv>
+  </tu>
+   
+<tu tuid='byday'>
+   <tuv xml:lang="ru"><seg>день</seg></tuv>
+   <tuv xml:lang="uk"><seg>день</seg></tuv>
+   <tuv xml:lang="en"><seg>day</seg></tuv>
+  </tu>
+<tu tuid='byweek'>
+   <tuv xml:lang="ru"><seg>неделю</seg></tuv>
+   <tuv xml:lang="uk"><seg>тиждень</seg></tuv>
+   <tuv xml:lang="en"><seg>week</seg></tuv>
+  </tu>
+<tu tuid='bymonth'>
+   <tuv xml:lang="ru"><seg>месяц</seg></tuv>
+   <tuv xml:lang="uk"><seg>місяць</seg></tuv>
+   <tuv xml:lang="en"><seg>month</seg></tuv>
+  </tu>
+<tu tuid='byall'>
+   <tuv xml:lang="ru"><seg>все</seg></tuv>
+   <tuv xml:lang="uk"><seg>всі</seg></tuv>
+   <tuv xml:lang="en"><seg>all</seg></tuv>
+  </tu>
+<tu tuid='duration'>
+   <tuv xml:lang="ru"><seg>Длительность</seg></tuv>
+   <tuv xml:lang="uk"><seg>Тривалість</seg></tuv>
+   <tuv xml:lang="en"><seg>Duration</seg></tuv>
+  </tu>
+<!-- views -->   
+<tu tuid='view'>
+   <tuv xml:lang="ru"><seg>Просмотр</seg></tuv>
+   <tuv xml:lang="uk"><seg>Перегляд</seg></tuv>
+   <tuv xml:lang="en"><seg>View</seg></tuv>
+  </tu>
+<tu tuid='views'>
+   <tuv xml:lang="ru"><seg>Просмотра</seg></tuv>
+   <tuv xml:lang="uk"><seg>Перегляду</seg></tuv>
+   <tuv xml:lang="en"><seg>Views</seg></tuv>
+  </tu>
+<tu tuid='viewss'>
+   <tuv xml:lang="ru"><seg>Просмотров</seg></tuv>
+   <tuv xml:lang="uk"><seg>Переглядів</seg></tuv>
+   <tuv xml:lang="en"><seg>Views</seg></tuv>
+  </tu>
+<!-- /views -->
+<!-- second -->
+<tu tuid='second'>
+   <tuv xml:lang="ru"><seg>Секунда</seg></tuv>
+   <tuv xml:lang="uk"><seg>Секунда</seg></tuv>
+   <tuv xml:lang="en"><seg>Second</seg></tuv>
+  </tu>
+<tu tuid='seconds'>
+   <tuv xml:lang="ru"><seg>Секунды</seg></tuv>
+   <tuv xml:lang="uk"><seg>Секунди</seg></tuv>
+   <tuv xml:lang="en"><seg>Seconds</seg></tuv>
+  </tu>
+<tu tuid='secondss'>
+   <tuv xml:lang="ru"><seg>Секунд</seg></tuv>
+   <tuv xml:lang="uk"><seg>Секунд</seg></tuv>
+   <tuv xml:lang="en"><seg>Seconds</seg></tuv>
+  </tu>
+<!-- /second -->
+<!-- minute-->
+<tu tuid='minute'>
+   <tuv xml:lang="ru"><seg>Минута</seg></tuv>
+   <tuv xml:lang="uk"><seg>Хвилина</seg></tuv>
+   <tuv xml:lang="en"><seg>Minute</seg></tuv>
+  </tu>
+<tu tuid='minutes'>
+   <tuv xml:lang="ru"><seg>Минуты</seg></tuv>
+   <tuv xml:lang="uk"><seg>Хвилини</seg></tuv>
+   <tuv xml:lang="en"><seg>Minutes</seg></tuv>
+  </tu>
+<tu tuid='minutess'>
+   <tuv xml:lang="ru"><seg>Минут</seg></tuv>
+   <tuv xml:lang="uk"><seg>Хвилини</seg></tuv>
+   <tuv xml:lang="en"><seg>Minutes</seg></tuv>
+  </tu>
+<!-- /minute-->
+<!-- hour-->
+<tu tuid='hour'>
+   <tuv xml:lang="ru"><seg>Час</seg></tuv>
+   <tuv xml:lang="uk"><seg>Года</seg></tuv>
+   <tuv xml:lang="en"><seg>Hour</seg></tuv>
+  </tu>
+<tu tuid='hours'>
+   <tuv xml:lang="ru"><seg>Часа</seg></tuv>
+   <tuv xml:lang="uk"><seg>Години</seg></tuv>
+   <tuv xml:lang="en"><seg>Hours</seg></tuv>
+  </tu>
+<tu tuid='hourss'>
+   <tuv xml:lang="ru"><seg>Часов</seg></tuv>
+   <tuv xml:lang="uk"><seg>Годин</seg></tuv>
+   <tuv xml:lang="en"><seg>Hours</seg></tuv>
+  </tu>
+<!-- /hour-->
+<!-- day-->
+<tu tuid='day'>
+   <tuv xml:lang="ru"><seg>День</seg></tuv>
+   <tuv xml:lang="uk"><seg>Дінь</seg></tuv>
+   <tuv xml:lang="en"><seg>Day</seg></tuv>
+  </tu>
+<tu tuid='days'>
+   <tuv xml:lang="ru"><seg>Дня</seg></tuv>
+   <tuv xml:lang="uk"><seg>Діня</seg></tuv>
+   <tuv xml:lang="en"><seg>Days</seg></tuv>
+  </tu>
+<tu tuid='dayss'>
+   <tuv xml:lang="ru"><seg>Дней</seg></tuv>
+   <tuv xml:lang="uk"><seg>Днів</seg></tuv>
+   <tuv xml:lang="en"><seg>Days</seg></tuv>
+  </tu>
+<!-- /day-->
+<!-- week-->
+<tu tuid='week'>
+   <tuv xml:lang="ru"><seg>Неделя</seg></tuv>
+   <tuv xml:lang="uk"><seg>Тиждень</seg></tuv>
+   <tuv xml:lang="en"><seg>Week</seg></tuv>
+  </tu>
+<tu tuid='weeks'>
+   <tuv xml:lang="ru"><seg>Недели</seg></tuv>
+   <tuv xml:lang="uk"><seg>Тижнів</seg></tuv>
+   <tuv xml:lang="en"><seg>Weeks</seg></tuv>
+  </tu>
+<tu tuid='weekss'>
+   <tuv xml:lang="ru"><seg>Недель</seg></tuv>
+   <tuv xml:lang="uk"><seg>Тижнів</seg></tuv>
+   <tuv xml:lang="en"><seg>Weeks</seg></tuv>
+  </tu>
+<!-- /week-->
+<!-- month-->
+<tu tuid='month'>
+   <tuv xml:lang="ru"><seg>Месяц</seg></tuv>
+   <tuv xml:lang="uk"><seg>Місяц</seg></tuv>
+   <tuv xml:lang="en"><seg>Month</seg></tuv>
+  </tu>
+<tu tuid='months'>
+   <tuv xml:lang="ru"><seg>Месяца</seg></tuv>
+   <tuv xml:lang="uk"><seg>Місяці</seg></tuv>
+   <tuv xml:lang="en"><seg>Months</seg></tuv>
+  </tu>
+<tu tuid='monthss'>
+   <tuv xml:lang="ru"><seg>Месяцев</seg></tuv>
+   <tuv xml:lang="uk"><seg>Місяців</seg></tuv>
+   <tuv xml:lang="en"><seg>Months</seg></tuv>
+  </tu>
+<!-- /month-->
+<!-- year-->
+<tu tuid='year'>
+   <tuv xml:lang="ru"><seg>Год</seg></tuv>
+   <tuv xml:lang="uk"><seg>Рок</seg></tuv>
+   <tuv xml:lang="en"><seg>Year</seg></tuv>
+  </tu>
+<tu tuid='years'>
+   <tuv xml:lang="ru"><seg>Года</seg></tuv>
+   <tuv xml:lang="uk"><seg>Року</seg></tuv>
+   <tuv xml:lang="en"><seg>Years</seg></tuv>
+  </tu>
+<tu tuid='yearss'>
+   <tuv xml:lang="ru"><seg>Лет</seg></tuv>
+   <tuv xml:lang="uk"><seg>Рокив</seg></tuv>
+   <tuv xml:lang="en"><seg>Years</seg></tuv>
+  </tu>
+<!-- /year-->
+<!-- decade-->
+<tu tuid='decade'>
+   <tuv xml:lang="ru"><seg>Десятилетие</seg></tuv>
+   <tuv xml:lang="uk"><seg>Десятиліте</seg></tuv>
+   <tuv xml:lang="en"><seg>Decade</seg></tuv>
+  </tu>
+<tu tuid='decades'>
+   <tuv xml:lang="ru"><seg>Десятилетия</seg></tuv>
+   <tuv xml:lang="uk"><seg>Десятиліте</seg></tuv>
+   <tuv xml:lang="en"><seg>Decades</seg></tuv>
+  </tu>
+<tu tuid='decadess'>
+   <tuv xml:lang="ru"><seg>Десятилетий</seg></tuv>
+   <tuv xml:lang="uk"><seg>Десятиліть</seg></tuv>
+   <tuv xml:lang="en"><seg>Decades</seg></tuv>
+  </tu>
+<!-- decade-->
+
+<tu tuid='allcategory'>
+   <tuv xml:lang="ru"><seg>Категории</seg></tuv>
+   <tuv xml:lang="uk"><seg>Категорії</seg></tuv>
+   <tuv xml:lang="en"><seg>Categories</seg></tuv>
+  </tu>
+<tu tuid='nearestadd'>
+   <tuv xml:lang="ru"><seg>Недавно добавленные</seg></tuv>
+   <tuv xml:lang="uk"><seg>Нещодавно додані</seg></tuv>
+   <tuv xml:lang="en"><seg>Recently added</seg></tuv>
+  </tu>
+<tu tuid='tags'>
+   <tuv xml:lang="ru"><seg>Облако тегов</seg></tuv>
+   <tuv xml:lang="uk"><seg>Хмара тегів</seg></tuv>
+   <tuv xml:lang="en"><seg>Tag Cloud</seg></tuv>
+  </tu>
+<tu tuid='ago'>
+   <tuv xml:lang="ru"><seg>Назад</seg></tuv>
+   <tuv xml:lang="uk"><seg>Тому</seg></tuv>
+   <tuv xml:lang="en"><seg>Ago</seg></tuv>
+  </tu>
+  <tu tuid='copyrights'>
+   <tuv xml:lang="ru"><seg>Все права защищены международным законодательством.<br />Администрация сайта не несет ответственности за загружаемые пользователями файлы.</seg></tuv>
+   <tuv xml:lang="uk"><seg>Всі права захищені міжнародним законодательством.<br />Адміністрація сайту не несе відповідальності за завантаження користувачами файли.</seg></tuv>
+   <tuv xml:lang="en"><seg>All rights reserved.<br />Administration of the site is not liable for downloaded files by users.</seg></tuv>
+  </tu>
+  <tu tuid='failoservice'>
+   <tuv xml:lang="ru"><seg>Файлообменник</seg></tuv>
+   <tuv xml:lang="uk"><seg>Файлообмінник</seg></tuv>
+   <tuv xml:lang="en"><seg>Fileshare</seg></tuv>
+  </tu>
+  <tu tuid='mailservice'>
+   <tuv xml:lang="ru"><seg>Почта</seg></tuv>
+   <tuv xml:lang="uk"><seg>Пошта</seg></tuv>
+   <tuv xml:lang="en"><seg>Mail</seg></tuv>
+  </tu>
+  <tu tuid='portalservice'>
+   <tuv xml:lang="ru"><seg>Портал</seg></tuv>
+   <tuv xml:lang="uk"><seg>Портал</seg></tuv>
+   <tuv xml:lang="en"><seg>Portal</seg></tuv>
+  </tu>
+  <tu tuid='allcategory'>
+   <tuv xml:lang="ru"><seg>во всех категориях</seg></tuv>
+   <tuv xml:lang="uk"><seg>у всіх категоріях</seg></tuv>
+   <tuv xml:lang="en"><seg>in all categories</seg></tuv>
+  </tu>
+<tu tuid='authorize'>
+   <tuv xml:lang="ru"><seg>Авторизация</seg></tuv>
+   <tuv xml:lang="uk"><seg>Авторизація</seg></tuv>
+   <tuv xml:lang="en"><seg>Authorization</seg></tuv>
+  </tu>
+<tu tuid='login'>
+   <tuv xml:lang="ru"><seg>Логин</seg></tuv>
+   <tuv xml:lang="uk"><seg>Логін</seg></tuv>
+   <tuv xml:lang="en"><seg>Login</seg></tuv>
+  </tu>
+<tu tuid='password'>
+   <tuv xml:lang="ru"><seg>Пароль</seg></tuv>
+   <tuv xml:lang="uk"><seg>Пароль</seg></tuv>
+   <tuv xml:lang="en"><seg>Password</seg></tuv>
+  </tu>
+<tu tuid='remember'>
+   <tuv xml:lang="ru"><seg>Запомнить</seg></tuv>
+   <tuv xml:lang="uk"><seg>Запам'ятати</seg></tuv>
+   <tuv xml:lang="en"><seg>Remember</seg></tuv>
+  </tu>
+<tu tuid='restorepassword'>
+   <tuv xml:lang="ru"><seg>Забыли пароль</seg></tuv>
+   <tuv xml:lang="uk"><seg>Забули пароль</seg></tuv>
+   <tuv xml:lang="en"><seg>Forgot password</seg></tuv>
+  </tu>
+   <!-- tag's cloud -->
+  <tu tuid='Просмотров'>
+   <tuv xml:lang="uk"><seg>Переглядiв</seg></tuv>
+   <tuv xml:lang="en"><seg>Reviews</seg></tuv>
+  </tu>
+  <tu tuid='Владелец'>
+   <tuv xml:lang="uk"><seg>Власник</seg></tuv>
+   <tuv xml:lang="en"><seg>Owner</seg></tuv>
+  </tu>
+  <tu tuid='Категория'>
+   <tuv xml:lang="uk"><seg>Категорія</seg></tuv>
+   <tuv xml:lang="en"><seg>Category</seg></tuv>
+  </tu>
+  <tu tuid='Комментариев'>
+   <tuv xml:lang="uk"><seg>Коментарів</seg></tuv>
+   <tuv xml:lang="en"><seg>Comments</seg></tuv>
+  </tu>
+  <tu tuid='Результаты поиска для тэга'>
+   <tuv xml:lang="uk"><seg>Результати пошуку для тега</seg></tuv>
+   <tuv xml:lang="en"><seg>Search results for tag</seg></tuv>
+  </tu>
+  <tu tuid='Найдено роликов'>
+   <tuv xml:lang="uk"><seg>Знайдено роликів</seg></tuv>
+   <tuv xml:lang="en"><seg>Found videos</seg></tuv>
+  </tu>
+  <tu tuid='Не найдено ни одного ролика'>
+   <tuv xml:lang="uk"><seg>Не знайдено жодного ролика</seg></tuv>
+   <tuv xml:lang="en"><seg>Not found</seg></tuv>
+  </tu>
+  <!-- pager -->
+  <tu tuid='Первая'>
+   <tuv xml:lang="uk"><seg>Перша</seg></tuv>
+   <tuv xml:lang="en"><seg>First</seg></tuv>
+  </tu>
+  <tu tuid='Предыдущая'>
+   <tuv xml:lang="uk"><seg>Попередня</seg></tuv>
+   <tuv xml:lang="en"><seg>Previous</seg></tuv>
+  </tu>
+  <tu tuid='Следующая'>
+   <tuv xml:lang="uk"><seg>Наступна</seg></tuv>
+   <tuv xml:lang="en"><seg>Next</seg></tuv>
+  </tu>
+  <tu tuid='Последняя'>
+   <tuv xml:lang="uk"><seg>Остання</seg></tuv>
+   <tuv xml:lang="en"><seg>Last</seg></tuv>
+  </tu>
+  <tu tuid='hellouser'>
+   <tuv xml:lang="ru"><seg>Здравствуйте</seg></tuv>
+   <tuv xml:lang="uk"><seg>Здравствуйте</seg></tuv>
+   <tuv xml:lang="en"><seg>Hello</seg></tuv>
+  </tu>
+  <!-- search -->
+  <tu tuid='Результаты поиска для фразы'>
+   <tuv xml:lang="uk"><seg>Результати пошуку для фрази</seg></tuv>
+   <tuv xml:lang="en"><seg>Search results for phrases</seg></tuv>
+  </tu>
+  <tu tuid='logoutuser'>
+   <tuv xml:lang="ru"><seg>Выход</seg></tuv>
+   <tuv xml:lang="uk"><seg>Виход</seg></tuv>
+   <tuv xml:lang="en"><seg>Logout</seg></tuv>
+  </tu>
+  <!-- category -->
+  <tu tuid='Файлы категории'>
+   <tuv xml:lang="uk"><seg>Файли категорії</seg></tuv>
+   <tuv xml:lang="en"><seg>Files Categories</seg></tuv>
+  </tu>
+  <tu tuid='Просмотр файлов по тегу'>
+   <tuv xml:lang="uk"><seg>Перегляд файлів за міткою</seg></tuv>
+   <tuv xml:lang="en"><seg>Browsing files by tag</seg></tuv>
+  </tu>
+  <tu tuid='Просмотр файлов категории'>
+   <tuv xml:lang="uk"><seg>Перегляд файлів категорії</seg></tuv>
+   <tuv xml:lang="en"><seg>View Files Categories</seg></tuv>
+  </tu>
+  <tu tuid='Результат поиска файлов'>
+   <tuv xml:lang="uk"><seg>Результат пошуку файлів</seg></tuv>
+   <tuv xml:lang="en"><seg>Search result</seg></tuv>
+  </tu>
+  <tu tuid='Неправильный логин или пароль'>
+   <tuv xml:lang="uk"><seg>Невірний логін або пароль</seg></tuv>
+   <tuv xml:lang="en"><seg>Invalid username or password</seg></tuv>
+  </tu>
+  <!-- upload -->
+  <tu tuid='Загрузка видео'>
+   <tuv xml:lang="uk"><seg>Завантаження відео</seg></tuv>
+   <tuv xml:lang="en"><seg>Upload Videos</seg></tuv>
+  </tu>
+  <tu tuid='Путь к файлу'>
+   <tuv xml:lang="uk"><seg>Шлях до файлу</seg></tuv>
+   <tuv xml:lang="en"><seg>The path to the file</seg></tuv>
+  </tu>
+  <tu tuid='Путь к файлу'>
+   <tuv xml:lang="uk"><seg>Шлях до файлу</seg></tuv>
+   <tuv xml:lang="en"><seg>The path to the file</seg></tuv>
+  </tu>
+  <tu tuid='upload_file_tip'>
+   <tuv xml:lang="ru"><seg>Размер файла flv не больше 150 Mb, в остальных видеоформатах не более 300 Mb</seg></tuv>
+   <tuv xml:lang="uk"><seg>Розмір файлу flv не більше 150 Mb, в інших відеоформатів не більше 300 Mb</seg></tuv>
+   <tuv xml:lang="en"><seg>Filesize flv no more than 150 Mb, the rest of video up to 300 Mb</seg></tuv>
+  </tu>
+  <tu tuid='Заголовок ролика'>
+   <tuv xml:lang="uk"><seg>Заголовок ролика</seg></tuv>
+   <tuv xml:lang="en"><seg>Title video</seg></tuv>
+  </tu>
+  <tu tuid='upload_title_tip'>
+   <tuv xml:lang="ru"><seg>Название не должно содержать ненормативную лексику, оскорбления в чей-либо адрес, ссылки на другие сайты, рекламу</seg></tuv>
+   <tuv xml:lang="uk"><seg>Назва не повинна містити ненормативну лексику, образи в чий-небудь адресу, посилання на інші сайти, рекламу</seg></tuv>
+   <tuv xml:lang="en"><seg>The name must not contain abusive language, insults to anyone's address, links to other sites, advertising</seg></tuv>
+  </tu>
+  <tu tuid='Описание'>
+   <tuv xml:lang="uk"><seg>Опис</seg></tuv>
+   <tuv xml:lang="en"><seg>Description</seg></tuv>
+  </tu>
+  <tu tuid='Тэги'>
+   <tuv xml:lang="uk"><seg>Теги</seg></tuv>
+   <tuv xml:lang="en"><seg>Tags</seg></tuv>
+  </tu>
+  <tu tuid='через запятую'>
+   <tuv xml:lang="uk"><seg>через кому</seg></tuv>
+   <tuv xml:lang="en"><seg>separated by commas</seg></tuv>
+  </tu>
+  <tu tuid='Выберите категорию видео'>
+   <tuv xml:lang="uk"><seg>Виберіть категорію відео</seg></tuv>
+   <tuv xml:lang="en"><seg>Select a category video</seg></tuv>
+  </tu>
+  <tu tuid='Время'>
+   <tuv xml:lang="uk"><seg>Час</seg></tuv>
+   <tuv xml:lang="en"><seg>Elapsed</seg></tuv>
+  </tu>
+  <tu tuid='Загружено'>
+   <tuv xml:lang="uk"><seg>Завантажено</seg></tuv>
+   <tuv xml:lang="en"><seg>Uploaded</seg></tuv>
+  </tu>
+  <tu tuid='Скорость'>
+   <tuv xml:lang="uk"><seg>Швидкість</seg></tuv>
+   <tuv xml:lang="en"><seg>Speed</seg></tuv>
+  </tu>
+  <tu tuid='Поле не может быть пустым'>
+   <tuv xml:lang="uk"><seg>Поле не може бути порожнім</seg></tuv>
+   <tuv xml:lang="en"><seg>The field can not be empty</seg></tuv>
+  </tu>
+  <tu tuid='Не задан файл для загрузки или файл не подходит по критериям'>
+   <tuv xml:lang="uk"><seg>Не вказано файл або файл не підходить за критеріями</seg></tuv>
+   <tuv xml:lang="en"><seg>Do not set file for download or file is not suitable to the criteria</seg></tuv>
+  </tu>
+   
+<!-- comments -->   
+<tu tuid='comment'>
+   <tuv xml:lang="ru"><seg>Комментарий</seg></tuv>
+   <tuv xml:lang="uk"><seg>Коментар</seg></tuv>
+   <tuv xml:lang="en"><seg>Comment</seg></tuv>
+  </tu>
+<tu tuid='comments'>
+   <tuv xml:lang="ru"><seg>Комментария</seg></tuv>
+   <tuv xml:lang="uk"><seg>Комментария</seg></tuv>
+   <tuv xml:lang="en"><seg>Commentary</seg></tuv>
+  </tu>
+<tu tuid='commentss'>
+   <tuv xml:lang="ru"><seg>Комментариев</seg></tuv>
+   <tuv xml:lang="uk"><seg>Коментарів</seg></tuv>
+   <tuv xml:lang="en"><seg>Comments</seg></tuv>
+  </tu>
+<!-- /comments-->
+<tu tuid='vote'>
+   <tuv xml:lang="ru"><seg>Голосовать</seg></tuv>
+   <tuv xml:lang="uk"><seg>Голосувати</seg></tuv>
+   <tuv xml:lang="en"><seg>Vote</seg></tuv>
+  </tu>
+<tu tuid='ratevideo'>
+   <tuv xml:lang="ru"><seg>Рейтинг видео</seg></tuv>
+   <tuv xml:lang="uk"><seg>Рейтинг відео</seg></tuv>
+   <tuv xml:lang="en"><seg>Rate video</seg></tuv>
+  </tu>
+<tu tuid='possibleaddcomment'>
+   <tuv xml:lang="ru"><seg>Для того чтобы оставлять комментарии <a href="/index/register">зарегистрируйтесь</a></seg></tuv>
+   <tuv xml:lang="uk"><seg>Для того щоб залишати коментарі <a href="/index/register"> зареєструйтесь</a></seg></tuv>
+   <tuv xml:lang="en"><seg>In order to leave comments <a href="/index/register"> register</a></seg></tuv>
+  </tu>
+<tu tuid='inplaylist'>
+   <tuv xml:lang="ru"><seg>В плейлист</seg></tuv>
+   <tuv xml:lang="uk"><seg>В плейлист</seg></tuv>
+   <tuv xml:lang="en"><seg>In playlist</seg></tuv>
+  </tu>
+<tu tuid='refcode'>
+   <tuv xml:lang="ru"><seg>Ссылка и код</seg></tuv>
+   <tuv xml:lang="uk"><seg>Посилання та код</seg></tuv>
+   <tuv xml:lang="en"><seg>Reference code</seg></tuv>
+  </tu>
+<tu tuid='abuse'>
+   <tuv xml:lang="ru"><seg>Пожаловаться</seg></tuv>
+   <tuv xml:lang="uk"><seg>Поскаржитися</seg></tuv>
+   <tuv xml:lang="en"><seg>Abuse</seg></tuv>
+  </tu>
+<tu tuid='previousmove'>
+   <tuv xml:lang="ru"><seg>предыдущий ролик</seg></tuv>
+   <tuv xml:lang="uk"><seg>попередній ролик</seg></tuv>
+   <tuv xml:lang="en"><seg>previous movie</seg></tuv>
+  </tu>
+<tu tuid='nextmovie'>
+   <tuv xml:lang="ru"><seg>следующий ролик</seg></tuv>
+   <tuv xml:lang="uk"><seg>наступниі ролик</seg></tuv>
+   <tuv xml:lang="en"><seg>next movie</seg></tuv>
+  </tu>
+<tu tuid='jan'>
+   <tuv xml:lang="ru"><seg>января</seg></tuv>
+   <tuv xml:lang="uk"><seg>січеня</seg></tuv>
+   <tuv xml:lang="en"><seg>january</seg></tuv>
+ </tu>
+<tu tuid='feb'>
+   <tuv xml:lang="ru"><seg>февраля</seg></tuv>
+   <tuv xml:lang="uk"><seg>лютого</seg></tuv>
+   <tuv xml:lang="en"><seg>february</seg></tuv>
+ </tu>
+<tu tuid='mar'>
+   <tuv xml:lang="ru"><seg>марта</seg></tuv>
+   <tuv xml:lang="uk"><seg>березня</seg></tuv>
+   <tuv xml:lang="en"><seg>march</seg></tuv>
+ </tu>
+<tu tuid='apr'>
+   <tuv xml:lang="ru"><seg>апреля</seg></tuv>
+   <tuv xml:lang="uk"><seg>квітня</seg></tuv>
+   <tuv xml:lang="en"><seg>april</seg></tuv>
+ </tu>
+<tu tuid='may'>
+   <tuv xml:lang="ru"><seg>мая</seg></tuv>
+   <tuv xml:lang="uk"><seg>травня</seg></tuv>
+   <tuv xml:lang="en"><seg>may</seg></tuv>
+ </tu>
+<tu tuid='jun'>
+   <tuv xml:lang="ru"><seg>июня</seg></tuv>
+   <tuv xml:lang="uk"><seg>червня</seg></tuv>
+   <tuv xml:lang="en"><seg>june</seg></tuv>
+ </tu>
+<tu tuid='jul'>
+   <tuv xml:lang="ru"><seg>июля</seg></tuv>
+   <tuv xml:lang="uk"><seg>липня</seg></tuv>
+   <tuv xml:lang="en"><seg>july</seg></tuv>
+ </tu>
+<tu tuid='aug'>
+   <tuv xml:lang="ru"><seg>августа</seg></tuv>
+   <tuv xml:lang="uk"><seg>серпня</seg></tuv>
+   <tuv xml:lang="en"><seg>august</seg></tuv>
+ </tu>
+<tu tuid='sep'>
+   <tuv xml:lang="ru"><seg>сентября</seg></tuv>
+   <tuv xml:lang="uk"><seg>вересня</seg></tuv>
+   <tuv xml:lang="en"><seg>september</seg></tuv>
+ </tu>
+<tu tuid='okt'>
+   <tuv xml:lang="ru"><seg>октября</seg></tuv>
+   <tuv xml:lang="uk"><seg>жовтня</seg></tuv>
+   <tuv xml:lang="en"><seg>october</seg></tuv>
+ </tu>
+<tu tuid='nov'>
+   <tuv xml:lang="ru"><seg>ноября</seg></tuv>
+   <tuv xml:lang="uk"><seg>листопада</seg></tuv>
+   <tuv xml:lang="en"><seg>november</seg></tuv>
+ </tu>
+<tu tuid='dec'>
+   <tuv xml:lang="ru"><seg>декабря</seg></tuv>
+   <tuv xml:lang="uk"><seg>грудня</seg></tuv>
+   <tuv xml:lang="en"><seg>december</seg></tuv>
+ </tu>
+<tu tuid='wrote'>
+   <tuv xml:lang="ru"><seg>написал</seg></tuv>
+   <tuv xml:lang="uk"><seg>написав</seg></tuv>
+   <tuv xml:lang="en"><seg>wrote</seg></tuv>
+ </tu>
+<tu tuid='reply'>
+   <tuv xml:lang="ru"><seg>Ответить</seg></tuv>
+   <tuv xml:lang="uk"><seg>Відповісти</seg></tuv>
+   <tuv xml:lang="en"><seg>Reply</seg></tuv>
+ </tu>
+<tu tuid='makecomment'>
+   <tuv xml:lang="ru"><seg>Оставить комментарий</seg></tuv>
+   <tuv xml:lang="uk"><seg>Залишити коментар</seg></tuv>
+   <tuv xml:lang="en"><seg>Leave a comment</seg></tuv>
+ </tu>
+<tu tuid='countchars'>
+   <tuv xml:lang="ru"><seg>Cимволов осталось</seg></tuv>
+   <tuv xml:lang="uk"><seg>Cімволов залишилося</seg></tuv>
+   <tuv xml:lang="en"><seg>Characters left</seg></tuv>
+ </tu>
+<tu tuid='needaddfile'>
+   <tuv xml:lang="ru"><seg>Сначала необходимо добавить файлы в Ваш плейлист</seg></tuv>
+   <tuv xml:lang="uk"><seg>Спочатку необхідно додати файли у Ваш плейлист</seg></tuv>
+   <tuv xml:lang="en"><seg>You must first add the files in your playlist</seg></tuv>
+ </tu>
+<tu tuid='quickplaylist'>
+   <tuv xml:lang="ru"><seg>Быстрый плейлист</seg></tuv>
+   <tuv xml:lang="uk"><seg>Швидкий плейлист</seg></tuv>
+   <tuv xml:lang="en"><seg>Quick playlist</seg></tuv>
+ </tu>
+<tu tuid='mymessages'>
+   <tuv xml:lang="ru"><seg>Мои сообщения</seg></tuv>
+   <tuv xml:lang="uk"><seg>Мої повідомлення</seg></tuv>
+   <tuv xml:lang="en"><seg>My messages</seg></tuv>
+ </tu>
+<tu tuid='myroliks'>
+   <tuv xml:lang="ru"><seg>Мои ролики</seg></tuv>
+   <tuv xml:lang="uk"><seg>Мої ролики</seg></tuv>
+   <tuv xml:lang="en"><seg>My videos</seg></tuv>
+  </tu>
+<tu tuid='Удалить'>
+   <tuv xml:lang="uk"><seg>Видалити</seg></tuv>
+   <tuv xml:lang="en"><seg>Delete</seg></tuv>
+  </tu>
+ <tu tuid='Выбрать все'>
+   <tuv xml:lang="uk"><seg>Вибрати все</seg></tuv>
+   <tuv xml:lang="en"><seg>Delete all</seg></tuv>
+  </tu>
+ <tu tuid='Мой список воспроизведения'>
+   <tuv xml:lang="uk"><seg>Мій список відтворення</seg></tuv>
+   <tuv xml:lang="en"><seg>My playlist</seg></tuv>
+ </tu>
+<tu tuid='Вы действительно хотите добавить ролик в список воспроизведения?'>
+   <tuv xml:lang="uk"><seg>Ви дійсно хочете додати ролик до списку відтворення?</seg></tuv>
+   <tuv xml:lang="en"><seg>Are you sure you want to add video to a playlist?</seg></tuv>
+ </tu>
+<tu tuid='Вы действительно хотите удалить ролик из списка воспроизведения?'>
+   <tuv xml:lang="uk"><seg>Ви дійсно хочете видалити ролик зі списку відтворення?</seg></tuv>
+   <tuv xml:lang="en"><seg>Do you really want to delete the video from a playlist?</seg></tuv>
+ </tu>
+<tu tuid='Вы действительно хотите удалить выбранные ролики?'>
+   <tuv xml:lang="uk"><seg>Ви дійсно хочете видалити обрані ролики?</seg></tuv>
+   <tuv xml:lang="en"><seg>Are you sure you want to delete the selected videos?</seg></tuv>
+ </tu>
+<tu tuid='Выберите один или несколько роликов и повторите операцию'>
+   <tuv xml:lang="uk"><seg>Виберіть один або кілька роликів і повторіть операцію</seg></tuv>
+   <tuv xml:lang="en"><seg>Select one or more rollers and try again</seg></tuv>
+ </tu>
+<tu tuid='Редактировать описание'>
+   <tuv xml:lang="uk"><seg>Редагувати опис</seg></tuv>
+   <tuv xml:lang="en"><seg>Edit description</seg></tuv>
+ </tu>
+<tu tuid='Редактирование видео'>
+   <tuv xml:lang="uk"><seg>Редагування відео</seg></tuv>
+   <tuv xml:lang="en"><seg>Editing video</seg></tuv>
+ </tu>
+<tu tuid='setrate'>
+   <tuv xml:lang="ru"><seg>Ваш голос был учтен</seg></tuv>
+   <tuv xml:lang="uk"><seg>Ваш голос був врахований</seg></tuv>
+   <tuv xml:lang="en"><seg>Your vote has been taken into account</seg></tuv>
+  </tu>   
+<tu tuid='systemmessages'>
+   <tuv xml:lang="ru"><seg>Системное сообщение</seg></tuv>
+   <tuv xml:lang="uk"><seg>Системне повідомлення</seg></tuv>
+   <tuv xml:lang="en"><seg>System messages</seg></tuv>
+</tu>
+<tu tuid='deletemess'>
+   <tuv xml:lang="ru"><seg>Удалить</seg></tuv>
+   <tuv xml:lang="uk"><seg>Видалити</seg></tuv>
+   <tuv xml:lang="en"><seg>Delete</seg></tuv>
+</tu>
+<tu tuid='messdeletemessage'>
+   <tuv xml:lang="ru"><seg>Сообщение было удаленно</seg></tuv>
+   <tuv xml:lang="uk"><seg>Повідомлення було віддалено</seg></tuv>
+   <tuv xml:lang="en"><seg>Message has been remotely</seg></tuv>
+</tu>
+<tu tuid='postcomment'>
+   <tuv xml:lang="ru"><seg>Комментарий был отправлен</seg></tuv>
+   <tuv xml:lang="uk"><seg>Коментар був відправлений</seg></tuv>
+   <tuv xml:lang="en"><seg>Comment has been sent</seg></tuv>
+</tu>
+<tu tuid='link1'>
+   <tuv xml:lang="ru"><seg>URL</seg></tuv>
+   <tuv xml:lang="uk"><seg>URL</seg></tuv>
+   <tuv xml:lang="en"><seg>URL</seg></tuv>
+</tu>
+<tu tuid='link2'>
+   <tuv xml:lang="ru"><seg>Встраиваемый URL</seg></tuv>
+   <tuv xml:lang="uk"><seg>Вбудований URL</seg></tuv>
+   <tuv xml:lang="en"><seg>Embeddable URL</seg></tuv>
+</tu>
+<tu tuid='zerromassages'>
+   <tuv xml:lang="ru"><seg>Сообщений нет</seg></tuv>
+   <tuv xml:lang="uk"><seg>Повідомлень немає</seg></tuv>
+   <tuv xml:lang="en"><seg>No messages</seg></tuv>
+</tu>
+<tu tuid='Вы действительно хотите прервать загрузку?'>
+   <tuv xml:lang="uk"><seg>Ви дійсно бажаєте перервати завантаження?</seg></tuv>
+   <tuv xml:lang="en"><seg>Do you really want to cancel the download?</seg></tuv>
+</tu>
+<tu tuid='Идет загрузка'>
+   <tuv xml:lang="uk"><seg>Триває завантаження</seg></tuv>
+   <tuv xml:lang="en"><seg>Uploading</seg></tuv>
+</tu>
+  <!-- register -->
+  <tu tuid='Имя (ник)'>
+   <tuv xml:lang="uk"><seg>Ім'я (нік)</seg></tuv>
+   <tuv xml:lang="en"><seg>Name (nickname)</seg></tuv>
+  </tu>
+  <tu tuid='Подтвердите пароль'>
+   <tuv xml:lang="uk"><seg>Пiдтвердить пароль</seg></tuv>
+   <tuv xml:lang="en"><seg>Confirm password</seg></tuv>
+  </tu>
+  <tu tuid='Дата рождения'>
+   <tuv xml:lang="uk"><seg>Дата народження</seg></tuv>
+   <tuv xml:lang="en"><seg>Date of Birth</seg></tuv>
+  </tu>
+  <tu tuid='Ваш пол'>
+   <tuv xml:lang="uk"><seg>Стать</seg></tuv>
+   <tuv xml:lang="en"><seg>Sex</seg></tuv>
+  </tu>
+  <tu tuid='Мужской'>
+   <tuv xml:lang="uk"><seg>Чоловiча</seg></tuv>
+   <tuv xml:lang="en"><seg>Male</seg></tuv>
+  </tu>
+  <tu tuid='Женский'>
+   <tuv xml:lang="uk"><seg>Жiноча</seg></tuv>
+   <tuv xml:lang="en"><seg>Female</seg></tuv>
+  </tu>
+  <tu tuid='Я согласен с'>
+   <tuv xml:lang="uk"><seg>Я згоден з</seg></tuv>
+   <tuv xml:lang="en"><seg>I agree with</seg></tuv>
+  </tu>
+  <tu tuid='правилами сервиса'>
+   <tuv xml:lang="uk"><seg>правилами сервісу</seg></tuv>
+   <tuv xml:lang="en"><seg>terms of service</seg></tuv>
+  </tu>
+  <tu tuid='Пользователь с таким именем уже зарегистрирован в системе'>
+   <tuv xml:lang="uk"><seg>Користувач з таким ім'ям вже зареєстрований в системі</seg></tuv>
+   <tuv xml:lang="en"><seg>A user with that name already registered in the system</seg></tuv>
+  </tu>
+  <tu tuid='Пользователь с таким email уже зарегистрирован в системе'>
+   <tuv xml:lang="uk"><seg>Користувач з таким email вже зареєстрований в системі</seg></tuv>
+   <tuv xml:lang="en"><seg>A user with this email is already registered in the system</seg></tuv>
+  </tu>
+  <tu tuid='День'>
+   <tuv xml:lang="uk"><seg>День</seg></tuv>
+   <tuv xml:lang="en"><seg>Day</seg></tuv>
+  </tu>
+  <tu tuid='Месяц'>
+   <tuv xml:lang="uk"><seg>Місяць</seg></tuv>
+   <tuv xml:lang="en"><seg>Month</seg></tuv>
+  </tu>
+  <tu tuid='Год'>
+   <tuv xml:lang="uk"><seg>Рiк</seg></tuv>
+   <tuv xml:lang="en"><seg>Year</seg></tuv>
+  </tu>
+  <tu tuid='Январь'>
+   <tuv xml:lang="uk"><seg>Січень</seg></tuv>
+   <tuv xml:lang="en"><seg>January</seg></tuv>
+  </tu>
+  <tu tuid='Февраль'>
+   <tuv xml:lang="uk"><seg>Лютий</seg></tuv>
+   <tuv xml:lang="en"><seg>February</seg></tuv>
+  </tu>
+  <tu tuid='Март'>
+   <tuv xml:lang="uk"><seg>Березень</seg></tuv>
+   <tuv xml:lang="en"><seg>March</seg></tuv>
+  </tu>
+  <tu tuid='Апрель'>
+   <tuv xml:lang="uk"><seg>Квітень</seg></tuv>
+   <tuv xml:lang="en"><seg>April</seg></tuv>
+  </tu>
+  <tu tuid='Май'>
+   <tuv xml:lang="uk"><seg>Травень</seg></tuv>
+   <tuv xml:lang="en"><seg>May</seg></tuv>
+  </tu>
+  <tu tuid='Июнь'>
+   <tuv xml:lang="uk"><seg>Червень</seg></tuv>
+   <tuv xml:lang="en"><seg>June</seg></tuv>
+  </tu>
+  <tu tuid='Июль'>
+   <tuv xml:lang="uk"><seg>Липень</seg></tuv>
+   <tuv xml:lang="en"><seg>July</seg></tuv>
+  </tu>
+  <tu tuid='Август'>
+   <tuv xml:lang="uk"><seg>Серпень</seg></tuv>
+   <tuv xml:lang="en"><seg>August</seg></tuv>
+  </tu>
+  <tu tuid='Сентябрь'>
+   <tuv xml:lang="uk"><seg>Вересень</seg></tuv>
+   <tuv xml:lang="en"><seg>September</seg></tuv>
+  </tu>
+  <tu tuid='Октябрь'>
+   <tuv xml:lang="uk"><seg>Жовтень</seg></tuv>
+   <tuv xml:lang="en"><seg>October</seg></tuv>
+  </tu>
+  <tu tuid='Ноябрь'>
+   <tuv xml:lang="uk"><seg>Листопад</seg></tuv>
+   <tuv xml:lang="en"><seg>November</seg></tuv>
+  </tu>
+  <tu tuid='Ноябрь'>
+   <tuv xml:lang="uk"><seg>Грудень</seg></tuv>
+   <tuv xml:lang="en"><seg>December</seg></tuv>
+  </tu>
+  <tu tuid='Код на картинке'>
+   <tuv xml:lang="uk"><seg>Код на малюнку</seg></tuv>
+   <tuv xml:lang="en"><seg>Code on picture</seg></tuv>
+  </tu>
+  <tu tuid='Неправильный код, попробуйте еще раз'>
+   <tuv xml:lang="uk"><seg>Неправильний код, спробуйте ще раз</seg></tuv>
+   <tuv xml:lang="en"><seg>Wrong code, try again</seg></tuv>
+  </tu>
+ <tu tuid='Некорректный email'>
+   <tuv xml:lang="en"><seg>Invalid email</seg></tuv>
+   <tuv xml:lang="uk"><seg>Некоректний email</seg></tuv>
+  </tu>
+ <tu tuid='Пароль должен быть не менее 6 символов'>
+   <tuv xml:lang="en"><seg>The password must be at least 6 characters</seg></tuv>
+   <tuv xml:lang="uk"><seg>Пароль повинен бути не менше 6 символів</seg></tuv>
+  </tu>
+ <tu tuid='Пароли не совпадают'>
+   <tuv xml:lang="en"><seg>Passwords do not match</seg></tuv>
+   <tuv xml:lang="uk"><seg>Паролі не збігаються</seg></tuv>
+  </tu>
+ <tu tuid='Введите дату рождения'>
+   <tuv xml:lang="en"><seg>Enter your date of birth</seg></tuv>
+   <tuv xml:lang="uk"><seg>Введіть дату народження</seg></tuv>
+  </tu>
+ <tu tuid='Введите код на картинке'>
+   <tuv xml:lang="en"><seg>Enter the code in the image</seg></tuv>
+   <tuv xml:lang="uk"><seg>Введіть код на малюнку</seg></tuv>
+  </tu>
+ <tu tuid='Вы должны согласиться с правилами сервиса'>
+   <tuv xml:lang="en"><seg>You must agree to the terms of service</seg></tuv>
+   <tuv xml:lang="uk"><seg>Ви повинні погодитися з правилами сервісу</seg></tuv>
+  </tu>
+ <tu tuid='Введите Ваше имя'>
+   <tuv xml:lang="en"><seg>Enter your name</seg></tuv>
+   <tuv xml:lang="uk"><seg>Ваше ім'я</seg></tuv>
+  </tu>
+ <tu tuid='Неправильная длина'>
+   <tuv xml:lang="en"><seg>Incorrect length</seg></tuv>
+   <tuv xml:lang="uk"><seg>Неправильна довжина</seg></tuv>
+  </tu>
+ <tu tuid='Имя содержит недопустимые символы'>
+   <tuv xml:lang="en"><seg>Name contains illegal characters</seg></tuv>
+   <tuv xml:lang="uk"><seg>Ім'я містить неприпустимі символи</seg></tuv>
+  </tu>
+  <tu tuid='Регистрация'>
+   <tuv xml:lang="uk"><seg>Реєстрація</seg></tuv>
+   <tuv xml:lang="en"><seg>Register</seg></tuv>
+  </tu>
+  <tu tuid='Пароль'>
+   <tuv xml:lang="uk"><seg>Пароль</seg></tuv>
+   <tuv xml:lang="en"><seg>Password</seg></tuv>
+  </tu>
+ <tu tuid='Изменить пароль'>
+   <tuv xml:lang="uk"><seg>Змінити пароль</seg></tuv>
+   <tuv xml:lang="en"><seg>Change Password</seg></tuv>
+  </tu>
+  <tu tuid='Новый пароль'>
+   <tuv xml:lang="uk"><seg>Новий пароль</seg></tuv>
+   <tuv xml:lang="en"><seg>New password</seg></tuv>
+  </tu>
+  <tu tuid='Ваша учетная запись'>
+   <tuv xml:lang="uk"><seg>Ваш обліковий запис</seg></tuv>
+   <tuv xml:lang="en"><seg>Your Account</seg></tuv>
+  </tu>
+  <tu tuid='Мои ролики'>
+   <tuv xml:lang="uk"><seg>Мої ролики</seg></tuv>
+   <tuv xml:lang="en"><seg>My videos</seg></tuv>
+  </tu>
+
+
+

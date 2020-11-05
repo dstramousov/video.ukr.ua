@@ -1,0 +1,30 @@
+<div class="recent">
+
+<div class="recent_header">
+<div class="header_img"></div>
+<h1><?= Vida_Helpers_Text::_T('nearestadd') ?></h1>
+</div>
+
+<table class="block recent_b">
+<thead>
+<tr><td><b></b></td></tr>
+</thead>
+<tr><td class="block_middle">
+<div class="block_container">
+
+<?php 
+	if(count($this->nearest_video_array)>0) {
+		foreach ($this->nearest_video_array as $fileinfo): ?>
+	<?= $this->NearestVideoItem($fileinfo); ?>
+<?php 
+		endforeach; 
+	}?>
+
+</div>
+<i></i>
+</td></tr>
+<tr><th><i></i></th></tr>
+</table>
+
+
+</div>

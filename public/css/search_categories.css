@@ -1,0 +1,55 @@
+/* ================================================================ 
+This copyright notice must be untouched at all times.
+The original version of this stylesheet and the associated (x)html is available at http://www.cssplay.co.uk/menus/skeleton.html
+Copyright (c) 2005-2007 Stu Nicholls. All rights reserved.
+This stylesheet and the associated (x)html may be modified in any way to fit your requirements.
+=================================================================== */
+
+#search_cat_nav,
+#search_cat_nav ul {padding:0; margin:0; list-style:none; position:relative; z-index:200; list-style-type:none;}
+#search_cat_nav {height:18px; padding:0; font-size:11px;}
+
+#search_cat_nav table {border-collapse:collapse;}
+#search_cat_nav li {height:18px;}
+
+#search_cat_nav li li {float:none; height:18px;}
+/* a hack for IE5.x and IE6 */
+#search_cat_nav li a li {float:left;}
+/*
+#search_cat_nav li a {display:block; float:left; color:#FFFFFF; height:33px; text-decoration:none;} 
+#search_cat_nav li a:hover {text-decoration:none}*/
+#search_cat_nav li li a {float:none; text-decoration:none; cursor:pointer;}
+#search_cat_nav li li a:hover {float:none; text-decoration:none; cursor:pointer;}
+
+#search_cat_nav li:hover {position:relative; z-index:300;}
+#search_cat_nav a:hover {position:relative; z-index:300; text-decoration:none;}
+
+#search_cat_nav :hover ul {left:5px; top:25px;}
+/* another hack for IE5.5 and IE6 */
+#search_cat_nav a:hover ul {}
+
+#search_cat_nav ul {position:absolute; left:-9999px; top:-9999px;}
+
+/* it could have been this simple if all browsers understood */
+/* show next level */
+#search_cat_nav li:hover li:hover > ul {left:-15px; margin-left:100%; top:-1px;}
+/* keep further levels hidden */
+#search_cat_nav li:hover > ul ul {position:absolute; left:-9999px; top:-9999px; width:auto;}
+/* show path followed */
+/*#search_cat_nav li:hover > a {text-decoration:none; color:#FFFFFF;} */
+
+
+/* but IE5.x and IE6 need this lot to style the flyouts*/
+/* show next level */
+#search_cat_nav a:hover a:hover ul,
+#search_cat_nav a:hover a:hover a:hover ul,
+#search_cat_nav a:hover a:hover a:hover a:hover ul,
+#search_cat_nav a:hover a:hover a:hover a:hover a:hover ul
+{left:100%; top:-1px;}
+
+/* keep further levels hidden */
+#search_cat_nav a:hover ul ul,
+#search_cat_nav a:hover a:hover ul ul,
+#search_cat_nav a:hover a:hover a:hover ul ul,
+#search_cat_nav a:hover a:hover a:hover a:hover ul ul
+{position:absolute; left:-9999px; top:-9999px;}

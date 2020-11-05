@@ -1,0 +1,47 @@
+<!--
+See http://developer.yahoo.com/ypatterns/pattern.php?pattern=itempagination
+-->
+
+<?php if ($this->pageCount): ?>
+<div class="paginationControl">
+<span class="pg_total"><?= $this->firstItemNumber; ?> - <?= $this->lastItemNumber; ?>
+ èç <?= $this->totalItemCount; ?></span>
+
+<!-- First page link -->
+<?php if (isset($this->previous)): ?>
+  <a class="pg_active" href="<?= $this->url(array('page' => $this->first)); ?>">
+    <?= Vida_Helpers_Text::_T('Ïåğâàÿ') ?>
+  </a> |
+<?php else: ?>
+  <span class="pg_disabled"><?= Vida_Helpers_Text::_T('Ïåğâàÿ') ?></span> |
+<?php endif; ?>
+
+<!-- Previous page link -->
+<?php if (isset($this->previous)): ?>
+  <a class="pg_active" href="<?= $this->url(array('page' => $this->previous)); ?>">
+    &lt; <?= Vida_Helpers_Text::_T('Ïğåäûäóùàÿ') ?>
+  </a> |
+<?php else: ?>
+  <span class="pg_disabled">&lt; <?= Vida_Helpers_Text::_T('Ïğåäûäóùàÿ') ?></span> |
+<?php endif; ?>
+
+<!-- Next page link -->
+<?php if (isset($this->next)): ?>
+  <a class="pg_active" href="<?= $this->url(array('page' => $this->next)); ?>">
+    <?= Vida_Helpers_Text::_T('Ñëåäóşùàÿ') ?> &gt;
+  </a> |
+<?php else: ?>
+  <span class="pg_disabled"><?= Vida_Helpers_Text::_T('Ñëåäóşùàÿ') ?> &gt;</span> |
+<?php endif; ?>
+
+<!-- Last page link -->
+<?php if (isset($this->next)): ?>
+  <a class="pg_active" href="<?= $this->url(array('page' => $this->last)); ?>">
+    <?= Vida_Helpers_Text::_T('Ïîñëåäíÿÿ') ?>
+  </a>
+<?php else: ?>
+  <span class="pg_disabled"><?= Vida_Helpers_Text::_T('Ïîñëåäíÿÿ') ?></span>
+<?php endif; ?>
+
+</div>
+<?php endif; ?>

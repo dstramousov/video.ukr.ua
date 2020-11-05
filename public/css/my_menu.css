@@ -1,0 +1,55 @@
+/* ================================================================ 
+This copyright notice must be untouched at all times.
+The original version of this stylesheet and the associated (x)html is available at http://www.cssplay.co.uk/menus/skeleton.html
+Copyright (c) 2005-2007 Stu Nicholls. All rights reserved.
+This stylesheet and the associated (x)html may be modified in any way to fit your requirements.
+=================================================================== */
+
+#my_menu_nav,
+#my_menu_nav ul {padding:0; margin:0; list-style:none; position:relative; z-index:200; list-style-type:none;}
+#my_menu_nav {height:26px; padding:0; font-size:11px; float:right;}
+
+#my_menu_nav table {border-collapse:collapse;}
+#my_menu_nav li {height:26px;}
+
+#my_menu_nav li li {float:none; height:14px; width:160px; padding:10px 0 0 10px;}
+/* a hack for IE5.x and IE6 */
+#my_menu_nav li a li {float:left;}
+/*
+#my_menu_nav li a {display:block; float:left; color:#FFFFFF; height:33px; text-decoration:none;} 
+#my_menu_nav li a:hover {text-decoration:none}*/
+#my_menu_nav li li a {float:none; text-decoration:none; cursor:pointer;}
+#my_menu_nav li li a:hover {float:none; text-decoration:underline; cursor:pointer;}
+
+#my_menu_nav li:hover {position:relative; z-index:300;}
+#my_menu_nav a:hover {position:relative; z-index:300; text-decoration:none;}
+
+#my_menu_nav :hover ul {left:0px; top:26px;}
+/* another hack for IE5.5 and IE6 */
+#my_menu_nav a:hover ul {}
+
+#my_menu_nav ul {position:absolute; left:-9999px; top:-9999px;}
+
+/* it could have been this simple if all browsers understood */
+/* show next level */
+#my_menu_nav li:hover li:hover > ul {left:-15px; margin-left:100%; top:-1px;}
+/* keep further levels hidden */
+#my_menu_nav li:hover > ul ul {position:absolute; left:-9999px; top:-9999px; width:auto;}
+/* show path followed */
+/*#my_menu_nav li:hover > a {text-decoration:none; color:#FFFFFF;} */
+
+
+/* but IE5.x and IE6 need this lot to style the flyouts*/
+/* show next level */
+#my_menu_nav a:hover a:hover ul,
+#my_menu_nav a:hover a:hover a:hover ul,
+#my_menu_nav a:hover a:hover a:hover a:hover ul,
+#my_menu_nav a:hover a:hover a:hover a:hover a:hover ul
+{left:100%; top:-1px;}
+
+/* keep further levels hidden */
+#my_menu_nav a:hover ul ul,
+#my_menu_nav a:hover a:hover ul ul,
+#my_menu_nav a:hover a:hover a:hover ul ul,
+#my_menu_nav a:hover a:hover a:hover a:hover ul ul
+{position:absolute; left:-9999px; top:-9999px;}

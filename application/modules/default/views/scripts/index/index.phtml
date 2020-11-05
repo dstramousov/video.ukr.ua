@@ -1,0 +1,68 @@
+<!-- Random top video block -->
+<div class="big_video">
+		<?= $this->SWFObject($this->model_file_obj); ?>
+	</div>
+</div>
+
+<!-- /Random top video block -->
+
+
+<script type="text/javascript" language="javascript">
+//<![CDATA[
+    function doSwitcherTopVideo(swither_id){
+
+    	$('topvideo').innerHTML = '';
+
+	    ajax_request('/index/topswitcher', {"switcher_id" : swither_id}, null,
+	        function(refreshFoldersDiv) {
+
+	        	var elements = ['swday', 'swweek', 'swmonth', 'swall'];
+	        	for( var i=0 ; i<elements.length ; i++){
+	        		if(elements[i] == swither_id){ $(elements[i]).addClassName('d_w_current'); } else { $(elements[i]).removeClassName('d_w_current'); }
+	        	}
+
+	        	$('topvideo').innerHTML = refreshFoldersDiv;
+
+	        }, new Loader("topvideo", 'standby')
+	    );
+
+	}
+//]]>    
+</script>
+
+<div class="best_video">
+
+<div class="best_v_header">
+<div class="header_img"></div>
+<h1><?= Vida_Helpers_Text::_T('topvideo') ?></h1>
+<div class="by_day_week">
+	<a id="swday"   href="javascript:void(0)" onclick="doSwitcherTopVideo(this.id);"><?= Vida_Helpers_Text::_T('byday') ?></a>
+	<a id="swweek"  href="javascript:void(0)" onclick="doSwitcherTopVideo(this.id);"><?= Vida_Helpers_Text::_T('byweek') ?></a>
+	<a id="swmonth" href="javascript:void(0)" onclick="doSwitcherTopVideo(this.id);"><?= Vida_Helpers_Text::_T('bymonth') ?></a>
+	<a class="d_w_current" id="swall"   href="javascript:void(0)" onclick="doSwitcherTopVideo(this.id);"><?= Vida_Helpers_Text::_T('byall') ?></a>
+</div>
+</div>
+
+<table class="block best_v_b">
+<thead>
+<tr><td><b></b></td></tr>
+</thead>
+<tr><td class="block_middle">
+<div id="topvideo" class="block_container">
+
+<?php 
+	if(count($this->top_video_array)>0) {
+		foreach ($this->top_video_array as $fileinfo): ?>
+			<?= $this->TopVideoItem($fileinfo); ?>
+<?php 
+		endforeach; }?>
+
+</div>
+<i></i>
+</td></tr>
+<tr><th><i></i></th></tr>
+</table>
+
+
+</div>
+<br class="cl_b" />

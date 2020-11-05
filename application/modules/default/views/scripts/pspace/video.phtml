@@ -1,0 +1,96 @@
+<? $this->inlineScript()->captureStart() ?>
+    var values = <?= $this->values ?>;
+    var errors = <?= $this->errors ?>;
+
+    var video_loaded = false;
+    document.observe('dom:loaded', function() {
+        if(video_loaded) return false;
+        video_loaded = true;
+
+        populate_values('video-form', values);
+        populate_errors(errors);
+        
+        $('video-form').onsubmit = function() {
+            err = {};
+            var emptyMsg = "<?= Vida_Helpers_Text::_T('Поле не может быть пустым') ?>";
+            $val = $('title_id').getValue();
+            err.title = "";
+            if($val.blank()) {
+                err.title = emptyMsg;
+            }
+            $val = $('tags_id').getValue();
+            err.tags = "";
+            if($val.blank()) {
+                err.tags = emptyMsg;
+            }
+            $val = $('descr_id').getValue();
+            err.description = "";
+            if($val.blank()) {
+                err.description = emptyMsg;
+            }
+            $val = $('category').getValue();
+            err.category_id = "";
+            if($val.blank() || !$val.isNumeric()) {
+                err.category_id = emptyMsg;
+            }
+            var c = 0;
+            for(var i in err) {
+                if(!err[i].blank()) {
+                    c++;
+                }
+            }
+            if(c > 0) {
+                populate_errors(err);
+            } else {
+                return true;
+            }
+            return false;
+        }
+    });
+<? $this->inlineScript()->captureEnd() ?>
+<?= $this->inlineScript() ?>
+
+<div class="upload_video_container">
+<h1><?= Vida_Helpers_Text::_T('Редактирование видео') ?></h1>
+
+<div class="upload_video">
+<form id="video-form" method="POST" action="" enctype="multipart/form-data">
+<ul>
+
+<li>
+<span><?= Vida_Helpers_Text::_T('Заголовок ролика') ?>:</span><div class="u_v_error" id="title_error"></div>
+<input id="title_id" type="text" class="u_v_input" name="title"/>
+<span class="u_v_descr"><?= Vida_Helpers_Text::_T('upload_title_tip') ?></span>
+</li>
+
+<li>
+<span><?= Vida_Helpers_Text::_T('Описание') ?>:</span><div class="u_v_error" id="description_error"></div>
+<textarea id="descr_id" name="description" rows="" cols="" class="u_v_texta"></textarea>
+</li>
+
+<li>
+<span><?= Vida_Helpers_Text::_T('Категория') ?>:</span><div class="u_v_error" id="category_id_error"></div>
+<select id="category" class="u_v_select" name="category_id">
+<option disabled selected><?= Vida_Helpers_Text::_T('Выберите категорию видео') ?></option>
+<? foreach($this->categories as $category): ?>
+    <option value="<?= $category['category_id'] ?>"><?= $category['category'] ?></option>
+<? endforeach ?>
+</select>
+</li>
+
+<li>
+<span><?= Vida_Helpers_Text::_T('Тэги') ?> <i>(<?= Vida_Helpers_Text::_T('через запятую') ?>)</i>:</span><div class="u_v_error" id="tags_error"></div>
+<input id="tags_id" type="text" class="u_v_input" name="tags"/>
+<span class="u_v_descr"><?= Vida_Helpers_Text::_T('upload_title_tip') ?></span>
+</li>
+
+<li>
+    <input type="image" src="/images/save_video_<?= Vida_Helpers_Text::_L() ?>.gif" class="v_attr_save" />
+    <img onclick="javascript:history.go(-1);" src="/images/cancel_button1_<?= Vida_Helpers_Text::_L() ?>.gif" class="v_attr_cancel" />
+</li>
+
+</ul>
+</form>
+
+</div>
+</div>

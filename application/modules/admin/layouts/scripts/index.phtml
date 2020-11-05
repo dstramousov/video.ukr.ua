@@ -1,0 +1,51 @@
+<?= $this->doctype() ?>
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>  
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+    <?= $this->headTitle() ?>
+    <?= $this->headMeta() ?>
+    <? $this->headLink()->appendStylesheet(Vida_Helpers_File::get_rev('/css/admin/user.css')) ?>
+    <? $this->headLink()->appendStylesheet(Vida_Helpers_File::get_rev('/css/admin/highslide.css')) ?>
+
+    <? // Инициализация ExtJS ?>
+    <? $this->headLink()->appendStylesheet("/js/ext/resources/css/ext-all.css" )
+                        ->appendStylesheet("/js/ext/resources/css/xtheme-gray.css" )
+                        ->appendStylesheet(Vida_Helpers_File::get_rev('/css/admin/common.css')) ?>
+    <? //<!-- LIBS --> ?>
+    <? $this->headScript()->appendFile('/js/ext/adapter/prototype/prototype.js')
+                          ->appendFile('/js/ext/adapter/prototype/scriptaculous.js?load=effects')
+                          ->appendFile('/js/ext/adapter/prototype/ext-prototype-adapter.js')  ?>
+    <? //<!-- ENDLIBS --> ?>
+    <? $this->headScript()->appendFile('/js/ext/ext-all.js')
+                          ->appendFile(Vida_Helpers_File::get_rev('/js/admin/utils.js'))
+                          ->appendFile(Vida_Helpers_File::get_rev('/js/admin/common.js'))
+                          ->appendFile(Vida_Helpers_File::get_rev('/js/admin/ext_xtype.js'))
+    ?>
+
+    <? $this->headScript()->appendFile('/js/highslide/highslide-with-html.js')?>
+
+    <?= $this->headLink() ?>
+    <?= $this->headScript() ?>
+</head> 
+
+
+<script type="text/javascript">    
+//<![CDATA[
+    hs.graphicsDir = '/js/highslide/graphics/';
+	hs.outlineType = 'rounded-white';
+	hs.outlineWhileAnimating = true;
+	hs.allowSizeReduction = false;
+	hs.showCredits = false;
+	// always use this with flash, else the movie will be stopped on close:
+	hs.preserveContent = false;
+//]]>
+</script>
+
+
+<body>
+<div id="content"> 
+<?= $this->layout()->content ?>
+</div>
+
+</body>
+</html>

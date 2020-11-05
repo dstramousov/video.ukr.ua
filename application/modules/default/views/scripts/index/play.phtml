@@ -1,0 +1,288 @@
+<div class="workpage_container">
+
+<!-- VIDEO CONTAINER -->
+<div class="single_video_container">
+
+<div class="big_video">
+		<?= $this->SWFObject($this->model_file_obj, false); ?>
+	</div><!-- этот див открывается в хелпере -->
+</div>
+
+</div>
+<!-- /VIDEO CONTAINER -->
+
+<!-- ADD CONTROL -->
+<? $this->inlineScript()->captureStart() ?>
+    function setRating(rateval, fid){
+
+		ajax_request('/index/setrating/', {'rating_value': rateval, 'file_id': fid }, '<?= Vida_Helpers_Text::_T('setrate') ?>',
+						function(responseText) {}
+					);
+
+	    ex_setCookie('vua_rate_<?= $this->model_file_obj['id'] ?>', 1, 1);
+	    $('rating_block').innerHTML = '';
+	}
+<? $this->inlineScript()->captureEnd() ?>
+
+<div class="add_controls">
+
+<ul class="single_v_info">
+<li><?= Vida_Helpers_Text::_T('duration') ?>:&nbsp;<?= $this->duration; ?></li>
+<li><?= $this->csi; ?></li>
+<li><a href="#comments"><?= $this->com; ?></a></li>
+</ul>
+                                         
+<ul class="vote">
+<li class="single_v_counter"><div class="stars_counter"><div style="width:<?= $this->rper; ?>%"></div></div></li>
+<li class="single_v_rating"><div><?= Vida_Helpers_Text::_T('ratevideo') ?>:&nbsp;<?= $this->rval; ?></div></li>
+<li class="single_v_vote">
+
+<?php
+$auth = Zend_Auth::getInstance();
+if ($auth->hasIdentity()) : ?>
+
+<div id="rating_block" >
+<?php 
+	if(!isset($_COOKIE['vua_rate_'.$this->model_file_obj['id']])){
+		echo '
+			<span>'.Vida_Helpers_Text::_T('vote').':</span>
+				<a href="javascript:void(0);" onclick="setRating(1, '.$this->model_file_obj['id'].')" class="vote1"></a>
+				<a href="javascript:void(0);" onclick="setRating(2, '.$this->model_file_obj['id'].')" class="vote2"></a>
+				<a href="javascript:void(0);" onclick="setRating(3, '.$this->model_file_obj['id'].')" class="vote3"></a>
+				<a href="javascript:void(0);" onclick="setRating(4, '.$this->model_file_obj['id'].')" class="vote4"></a>
+				<a href="javascript:void(0);" onclick="setRating(5, '.$this->model_file_obj['id'].')" class="vote5"></a>';
+	}
+?>
+</div>
+
+<? endif ?>
+
+</li>
+</ul>
+
+<!-- playlist -->                                             
+<div class="playlist_ctrl">
+	<?= $this->prev_button_playlist; ?>
+	<a href="/index/playlist" class="my_playlist_link"><?= Vida_Helpers_Text::_T('mylist') ?></a>
+	<?= $this->next_button_playlist; ?>
+</div>
+<!-- /playlist -->
+
+</div>
+<!-- /ADD CONTROL -->
+
+<!-- SINGLE MISC -->
+<div class="single_v_misc">                                                      
+<div class="misc_links">
+<div id="tab1"><?= $this->inplaylist ?></div>
+<div id="tab2"><a id="atab2" href="javascript:void(0);" class=""><?= Vida_Helpers_Text::_T('refcode') ?></a></div>
+<div id="tab3"><a id="atab3" href="javascript:void(0);" class="complain"><?= Vida_Helpers_Text::_T('abuse') ?></a></div>
+</div>
+
+<div class="misc_container">
+
+<table class="block comments">
+<thead>
+<tr><td colspan="2"><b></b></td></tr>
+</thead>
+<tr><td class="block_middle">
+<div class="block_container" id="block_container_id">
+<!--<a href="javascript:void(0);" onclick="closePannel();" class="misc_close"></a>-->
+<!-- playlist container-->
+<div id="content1">
+<?= $this->quickplaylist; ?>
+</div>
+<!-- /playlist container-->
+
+
+<!-- URL`S container-->
+<div id="content2">
+
+<div class="link_code_block">
+<span><?= Vida_Helpers_Text::_T('link1') ?></span>
+<input id="url_1" type="text" value="<?= $this->videourl1 ?>" />
+<span><?= Vida_Helpers_Text::_T('link2') ?></span>
+<!--<input type="text" />-->
+<textarea class="custom_textarea1" id="url_2" name="url_2_name" cols="" rows=""><?= $this->videourl2; ?></textarea>
+<!--<span>ссылка для 3</span>
+<input type="text" />-->
+</div>
+
+</div>
+<!-- /URL`S container-->
+
+<!-- abuse container-->
+<div id="content3">
+
+<? $this->inlineScript()->captureStart() ?>
+
+    function initabuse() {
+        Element.observe($('reason_id'), 'change', function() {
+            abuse_change();
+        });
+        abuse_change();
+    }
+
+    function abuse_change(e) {
+        var value = $('reason_id').value;
+        if(value == 2) {
+            $('reason_text_id').show();
+            $('reason_text_id').focus();
+			myAccordion.showThisHideOpen(stretchers[2]);
+        } else {
+            $('reason_text_id').hide();
+        }
+    }
+
+
+    function abuse_send() {
+        var reason = $('reason_id').value;
+        if(reason == 2 && $('reason_text_id').value == "") {
+			init_toggle($('reason_text_id'));
+			$('reason_text_id').focus();
+        } else {
+            ajax_request('/index/abuse/', {'reason': reason, 'reason_text': $('reason_text_id').value, 'file_id': <?= $this->file_id ?> },
+                '<?= Vida_Helpers_Text::_T('Вы действительно хотите пожаловаться на содержимое этого файла?') ?>',
+                function(responseText) {
+                    alert('<?= Vida_Helpers_Text::_T('Ваша жалоба отправлена на рассмотрение') ?>');
+                });
+        }
+    }
+<? $this->inlineScript()->captureEnd() ?>
+
+<? $this->inlineScript()->captureStart() ?>
+	Event.onReady(function() {initabuse()});
+<? $this->inlineScript()->captureEnd() ?>
+
+
+<div class="complain_block">
+
+<form action="/index/abuse/" method="POST">
+<select name="reason" id="reason_id">
+   <option disabled><?= Vida_Helpers_Text::_T('Выберите причину') ?></option>
+   <option selected value="0"><?= Vida_Helpers_Text::_T('Нарушение правил лицензионного соглашения') ?></option>
+   <option value="1"><?= Vida_Helpers_Text::_T('Битый файл') ?></option>
+   <option value="2"><?= Vida_Helpers_Text::_T('Другая причина') ?></option>
+</select>
+<textarea id="reason_text_id" name="reason_text" cols="" rows=""></textarea>
+<img type="image" src="/images/leave_comment_<?= Vida_Helpers_Text::_L() ?>.gif" onclick="abuse_send()"/>
+</form>
+
+</div>
+
+</div>
+<!-- /abuse container-->
+
+</div>
+</td>
+<td class="block_middle_r"></td>
+</tr>
+<tr><th colspan="2"><i></i></th></tr>
+</table>
+
+</div>
+
+</div>
+
+<? $this->inlineScript()->captureStart() ?>
+
+function init(){
+
+	toggles	= $('tab1', 'tab2', 'tab3'); 
+	stretchers	= $('content1','content2','content3');
+
+	myAccordion = new fx.Accordion(
+									toggles, 
+									stretchers, {
+													opacity: false, height: true, duration: 300
+												}
+								  );
+
+	myAccordion.showThisHideOpen(stretchers[0]);
+
+	toggles.each(function(toggle, i){
+
+		Event.observe(toggle, "click", function(event) {
+			var toggler_index = i+1;
+			if(toggler_index==1){$('atab1').addClassName('misc_current');$('atab2').removeClassName('misc_current');$('atab3').removeClassName('misc_current');}
+			if(toggler_index==2){$('atab2').addClassName('misc_current');$('atab1').removeClassName('misc_current');$('atab3').removeClassName('misc_current');}
+			if(toggler_index==3){
+				$('atab3').addClassName('misc_current');$('atab1').removeClassName('misc_current');$('atab2').removeClassName('misc_current');
+			}
+	    });
+	});
+}
+
+<? $this->inlineScript()->captureEnd() ?>
+
+<? $this->inlineScript()->captureStart() ?>
+	Event.onReady(function() {init()});
+<? $this->inlineScript()->captureEnd() ?>
+
+<!-- /SINGLE MISC -->
+
+<!-- COMMENTS CONTAINER -->
+<a id="comments"/>
+<div class="comments_container">
+
+<table class="block comments">
+<thead>
+<tr><td colspan="2"><b></b></td></tr>
+</thead>
+<tr><td class="block_middle">
+<h1><?= $this->com; ?></h1>
+<div class="block_container">
+
+<ul class="comments_list">
+	<?= $this->comments_html_block; ?>
+</ul>
+	<?php
+		$auth = Zend_Auth::getInstance();
+		if ($auth->hasIdentity()) : ?>
+			<div class="add_coment_container">                                          
+				<div class="add_c_title"><?= Vida_Helpers_Text::_T('makecomment') ?></div>
+				<div class="symbols_count"><?= Vida_Helpers_Text::_T('countchars') ?>:<span id="countchars">1024</span></div>
+				<textarea id="comment_body" name="comment_body_name" cols="" rows="" onkeydown="limitText(this,$('countchars'),1024);" onkeyup="limitText(this,$('countchars'),1024);"></textarea>
+				<input type="image" onclick="doComment();" src="/images/leave_comment_<?= Vida_Helpers_Text::_L() ?>.gif" />
+			</div>
+		<? else: ?>
+			<div class="reg_to_comment"><?= Vida_Helpers_Text::_T('possibleaddcomment') ?></div>
+		<? endif ?>
+		<div id="comments_make_block"></div>
+</div>
+<div id="fid" style="visibility:hidden;"><?= $this->file_id ?></div>
+<div id="cid" style="visibility:hidden;">0</div>
+<? $this->inlineScript()->captureStart() ?>
+	function doComment(){
+
+		if($('comment_body').value == ''){
+			init_toggle($('comment_body'));
+			$('comment_body').focus();
+			return false;
+		}
+
+		ajax_request('/index/postcomment/', {'body_comment': $('comment_body').value, 'parent_id': $('cid').innerHTML, 'file_id': $('fid').innerHTML}, '<?= Vida_Helpers_Text::_T('postcomment') ?>',
+						function(responseText) {
+							
+							$('comment_body').value = '';
+							$('countchars').innerHTML = 1024;
+
+                            location.reload();
+
+						}
+					);
+		
+	}
+<? $this->inlineScript()->captureEnd() ?>
+ 
+
+</td>
+<td class="block_middle_r"></td>
+</tr>
+<tr><th colspan="2"><i></i></th></tr>
+</table>
+
+</div>
+<!-- /COMMENTS CONTAINER -->
+
+</div>

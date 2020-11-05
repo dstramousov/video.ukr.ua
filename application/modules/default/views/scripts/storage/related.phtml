@@ -1,0 +1,12 @@
+<?php echo '<?xml version="1.0" encoding="utf-8" ?>'; ?>
+<videolist>
+   <title>Смотрите также:</title>
+   <? foreach($this->videos as $video) : ?>
+        <video id="<?= $video['file_id'] ?>">
+                <title><?= $video['title'] ?></title>
+                <thumb><?= $video['preview_image_url'] ?></thumb>
+                <url><?= $video['video_url'] ?></url>
+        </video>
+   <? endforeach ?>
+
+</videolist>

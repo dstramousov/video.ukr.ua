@@ -1,0 +1,16 @@
+<div class="search_results_container">
+<h1><?= Vida_Helpers_Text::_T('Мой список воспроизведения') ?></h1>
+<div style="clear: both"></div>
+<!--div class="s_r_sort">123</div-->
+
+<?php if (count($this->paginator)): ?>
+    <?= $this->paginator; ?>
+    <?php foreach ($this->entries as $file): ?>
+        <?= $this->videoItem($file, $this->keys) ?>
+    <?php endforeach; ?>
+    <?= $this->paginator; ?>
+<?php else: ?>
+        <p><?= Vida_Helpers_Text::_T('Не найдено ни одного ролика') ?></p>
+<?php endif ?>
+
+</div>

@@ -1,0 +1,31 @@
+<!-- upload -->
+
+<? $this->inlineScript()->captureStart() ?>
+<? $this->inlineScript()->captureEnd() ?>
+<?= $this->inlineScript() ?>
+
+<style>
+label {display: block; margin-bottom: 10px; font-size: 1em;}
+
+</style>
+
+<h1>Форма загрузки файла на сервер</h1>
+<form id="upload-form" action="/index/upload/" method="POST" enctype="multipart/form-data">
+    <label>Выберите видео для загрузки:
+    <input type="file" name="filename" /></label>
+
+    <label>Выберите категорию:
+    <select id="id_category_uploaded_file" name="category_file">
+	    <?= $this->category_uploaded_file ?>
+    </select>
+
+    <label>Введите теги:
+    <input type="text" name="tags" /></label>
+    
+    <label>Введите описание:
+    <textarea name="description"></textarea></label>
+    
+    <input type="submit" name="filename" text="Отправить"/>
+</form>
+
+<!-- upload end -->

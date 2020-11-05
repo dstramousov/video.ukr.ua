@@ -1,0 +1,7 @@
+.login_screen {display:none; visibility:collapse;}
+.login {background-image:url(../images/login_bg.gif)}
+
+.playlist_rew:hover b {background-position:0 0;}
+.playlist_ff:hover b {background-position:-24px 0;}
+
+.footer div {position:relative;}

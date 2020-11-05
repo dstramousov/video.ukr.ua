@@ -1,0 +1,14 @@
+<? $this->inlineScript()->captureStart() ?>
+    function deleteMessage(mid){
+
+		ajax_request('/index/deletemessage/', {'mess_id': mid }, '<?= Vida_Helpers_Text::_T('messdeletemessage') ?>',
+						function(responseText) {Effect.DropOut('message_'+mid);}
+					);
+                    
+	}
+<? $this->inlineScript()->captureEnd() ?>
+
+<div class="search_results_container">
+	<h1><?= Vida_Helpers_Text::_T('mymessages') ?></h1>
+        <?= $this->MyMessages(); ?>
+</div>

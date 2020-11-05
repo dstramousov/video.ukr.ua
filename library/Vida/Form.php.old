@@ -1,0 +1,140 @@
+<?php
+class Vida_Form extends Zend_Form
+{
+    /**
+     * Vida_Form Constants
+     */
+    const TABLE = 0;        //верстка таблицами
+    const DIV    = 1;       //верстка блоками
+    
+    protected $_mode;
+    
+    /**
+     * ”становка режима верстки формы
+     * @param Vida_Form::constants $mode режим работы
+     * @return void
+     */
+    public function setMode($mode)
+    {
+        $this->_mode = $mode;
+    }
+    
+    /**
+     * Constructor
+     *
+     * Registers form view helper as decorator
+     * 
+     * @param mixed $options 
+     * @return void
+     */
+    public function __construct($options = null)
+    {
+        $this->setMode(self::DIV); 
+        
+        parent::__construct($options);
+        
+        $this->postInit();
+    }
+
+    /**
+     * ¬озвращает тип элемента из его полного наименовани€
+     * @param string $type
+     * @return string
+    */
+    protected function _getType($type)
+    {
+        if(preg_match('/_([a-zA-Z]+)$/', $type, $matches))
+        {
+            return $matches[1];
+        }
+        return "";
+    }
+
+    /**
+     * Initialize form (used by extending classes)
+     * 
+     * @return void
+     */
+    public function postInit()
+    {
+        //установка декораторов групп элементов
+        foreach($this->_displayGroups as $group)
+        {
+            if($this->_mode == self::DIV)
+            {
+                $group->setDisableLoadDefaultDecorators(true);
+                $group->clearDecorators();
+                $group->addDecorator('FormElements')
+                    ->addDecorator('Fieldset')
+                    ->addDecorator('HtmlTag', array('tag' => 'div', 'class' => 'group'));
+            }
+            else
+            {
+                
+            }
+        }
+                
+        //установка декораторов элементов
+        foreach($this->_elements as $element)
+        {
+            if($element instanceof Zend_Form_Element)
+            {
+                $element->setDisableLoadDefaultDecorators(true);
+                if(!method_exists($element, 'getType'))
+                {
+                    dump($element);
+                }
+                switch($this->_getType($element->getType()))
+                {
+                    case "ValidationTextBox":
+                    case "PasswordTextBox":
+                        if($this->_mode == self::DIV)
+                        {
+                            $element->clearDecorators();
+                            $element->addDecorator('DijitElement')
+                                ->addDecorator('Errors')
+                                //->addDecorator(array('data' => 'HtmlTag'), array('tag' => 'div', 'class' => 'element'))
+                                ->addDecorator('Label', array('class' => 'left', 'placement' => 'prepend'))
+                                ->addDecorator(array('row' => 'HtmlTag'), array('tag' => 'p'));
+                        }
+                        else
+                        {
+                        }
+                        break;
+                    case "Button":
+                        if($this->_mode == self::DIV)
+                        {
+                            $element->clearDecorators();
+                            $element->addDecorator('DijitElement')
+                                ->addDecorator(array('data' => 'HtmlTag'), array('tag' => 'div', 'class' => 'element'));
+                        }
+                        else
+                        {
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+    
+    /**
+     * «агрузка декораторов формы по умолчанию
+     * @return void
+     */
+    public function loadDefaultDecorators()
+    {
+        if($this->_mode == self::DIV)
+        {
+            $this->setDecorators(array(
+                'FormElements',
+                array('HtmlTag', array('tag' => 'div', 'class' => 'container')),
+                'Form',
+            ));
+        }
+        else
+        {
+        }
+    }
+}
